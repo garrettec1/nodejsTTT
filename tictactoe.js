@@ -43,6 +43,14 @@ Game_Board.prototype.make_move = function(move, piece){
         board_index = board_index + 2;
     }
 }
+    return(board_index);
+};
+
+// Again, keeping it simple for now. I will assume a valid move is passed
+Game_Board.prototype.make_move = function(move, piece){
+    var move_index = this._find_index(move);
+    this.board[move_index] = piece;
+};
 
 var testing = new Game_Board();
 testing.display_board();
