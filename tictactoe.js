@@ -24,6 +24,8 @@ Game_Board.prototype.display_board = function(){
                             this.board[8]));
 };
 
+Game_Board.prototype._find_index = function(move){
+};
 // Again, keeping it simple for now. I will assume a valid move is passed
 // This function is currently doing way too much. Need to do some abstraction
 Game_Board.prototype.make_move = function(move, piece){
