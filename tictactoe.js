@@ -25,10 +25,6 @@ Game_Board.prototype.display_board = function(){
 };
 
 Game_Board.prototype._find_index = function(move){
-};
-// Again, keeping it simple for now. I will assume a valid move is passed
-// This function is currently doing way too much. Need to do some abstraction
-Game_Board.prototype.make_move = function(move, piece){
     var row = move.charAt(0);
     var column = move.charAt(1);
     var board_index = 0;
