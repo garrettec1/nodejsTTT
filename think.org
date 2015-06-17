@@ -36,6 +36,7 @@ This text file is for organizing my thoughts.
        data in a gnarly way. Also hard to read.
 **** Bisectional array.
      - Use a simple array to hold board state initialized with ' ' in each index.
+     - Important note* access should be abstracted, responisibility of ... board.
      - Math to access.
        * coordinates denote shifts in index.
        * '1a'
