@@ -18,3 +18,13 @@ This text file is for organizing my thoughts.
         - updated board
         - is move legal?
         - winning move?
+*** data structure
+   - The display of the board is intimately related to how I am going to store
+     and the state of the game pieces.
+**** dictionary/map
+     - Previously I have done this by using a dictionary (map) and format
+       strings to get the game pieces displayed properly. Let's see if I can think
+       of another way.
+     - The convenience of this was that the board location was also the key value.
+     - Since any function in the game could access this, it simplified the
+       interface.
