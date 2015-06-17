@@ -28,3 +28,9 @@ This text file is for organizing my thoughts.
      - The convenience of this was that the board location was also the key value.
      - Since any function in the game could access this, it simplified the
        interface.
+**** All encompesing array
+     - I could make an array that held the board state and the disply
+     - do something like var array = ['X', '|' , ' ', '|', 'O', '\n] ...
+       then build a string out of it.
+     - I don't think this is a good idea because it marries the display and the
+       data in a gnarly way. Also hard to read.
