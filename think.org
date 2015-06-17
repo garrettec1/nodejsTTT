@@ -34,3 +34,13 @@ This text file is for organizing my thoughts.
        then build a string out of it.
      - I don't think this is a good idea because it marries the display and the
        data in a gnarly way. Also hard to read.
+**** Bisectional array.
+     - Use a simple array to hold board state initialized with ' ' in each index.
+     - Math to access.
+       * coordinates denote shifts in index.
+       * '1a'
+       * the first int adds index like this index = (coord - 1)*3 and so on
+       * the string index (if a -> index +0) (if b -> index +1) and so on
+     - How to print board in this case?
+     - how about something like console.log(" ", array(0), " | ", array(1)...
+       and so on.
