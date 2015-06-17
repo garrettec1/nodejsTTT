@@ -54,3 +54,12 @@ Game_Board.prototype.make_move = function(move, piece){
 
 var testing = new Game_Board();
 testing.display_board();
+console.log('1a');
+testing.make_move('1a','X');
+testing.display_board();
+console.log('2a');
+testing.make_move('2a','X');
+testing.display_board();
+console.log('3c');
+testing.make_move('3c','X');
+testing.display_board();
