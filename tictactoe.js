@@ -24,6 +24,9 @@ Game_Board.prototype.display_board = function(){
                             this.board[8]));
 };
 
+// Again, keeping it simple for now. I will assume a valid move is passed
+Game_Board.prototype.make_move = function(move, piece){
+}
 
 var testing = new Game_Board();
 testing.display_board();
