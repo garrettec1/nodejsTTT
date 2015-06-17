@@ -23,3 +23,7 @@ Game_Board.prototype.display_board = function(){
     console.log(util.format('\t3 %s | %s | %s', this.board[6], this.board[7],
                             this.board[8]));
 };
+
+
+var testing = new Game_Board();
+testing.display_board();
