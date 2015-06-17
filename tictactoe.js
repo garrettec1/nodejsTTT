@@ -1,6 +1,9 @@
 //Command Line Tic-Tac-Toe game
 //Garrett Fuller
 //Authored June 2015
+
+var util = require('util');
+
 // rough mock up of board object
 // constructor
 function Game_Board() {
