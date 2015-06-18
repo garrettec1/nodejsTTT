@@ -71,6 +71,6 @@ testing.display_board();
 console.log('2a');
 testing.make_move('2a','X');
 testing.display_board();
-console.log('3c');
-testing.make_move('3c','X');
+console.log('2a');
+console.log(testing.make_move('2a','X'));
 testing.display_board();
