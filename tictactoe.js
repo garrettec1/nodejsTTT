@@ -42,6 +42,7 @@ Game_Board.prototype._find_index = function(move){
 };
 
 //Some repeated code here for row and column. Function it?
+// Also need to check if the space is empty.
 Game_Board.prototype._check_move = function(move){
     var row = move.charAt(0);
     var column = move.charAt(1);
