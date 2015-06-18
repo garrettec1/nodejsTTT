@@ -38,8 +38,9 @@ Game_Board.prototype._find_index = function(move){
     }else if (column == 'c'){
         board_index = board_index + 2;
     }
-}
     return(board_index);
+};
+Game_Board.prototype._check_move = function(index){
 };
 
 // Again, keeping it simple for now. I will assume a valid move is passed
