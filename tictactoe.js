@@ -40,7 +40,15 @@ Game_Board.prototype._find_index = function(move){
     }
     return(board_index);
 };
-Game_Board.prototype._check_move = function(index){
+
+//Some repeated code here for row and column. Function it?
+Game_Board.prototype._check_move = function(move){
+    var row = move.charAt(0);
+    var column = move.charAt(1);
+    // I am aware there are some really cool functional ways to do this.
+    // I will try to figure them out later.
+    return((row == 1 || row == 2 || row == 3) &&
+           (column == 'a' || column == 'b' || column =='c'))
 };
 
 // Again, keeping it simple for now. I will assume a valid move is passed
