@@ -66,6 +66,17 @@ This text file is for organizing my thoughts.
      - Complications?
        1. I am a little concerned about how the AI is going to interact with
           Game_Board. It is going to be interesting to figure that out.
+**** Dealing with invalid moves
+     - Given that Game_Board has all of the information about the state of the
+       game, I think it is obvious that the responsibility for checking the
+       legality of a move rests within Game_Board.
+     - This begs the question: How will the interface operate.
+     - In general, one does not want to expose too many elements to other
+       objects.
+     - Therefor I think that check move will be a helper function called by
+       make_move.
+     - I will alter make_move to return a boolean value. If false they Player
+       object will have the responsibility of asking again for a move.
 * Implementing Testing
   I am currently attempting to implement an automated testing framework for my
   game. This is something I have never attempted before, but I think that TDD
