@@ -55,3 +55,14 @@ This text file is for organizing my thoughts.
       what I am working on. A string like '1a' will be passed.
     - This will want some private helper functions at some point. Need to look
       into how to do that in NodeJS. Looks like a convention thing.
+**** Why is interpretation of move string a responsibility of Game_Board?
+     - I could make a fairly solid argument that the player object should pass
+       an index that directly relates to the board.
+     - I chose not to do this for one primary reason.
+     - I don't want the player object to have too much information about the
+       game board. If I end up making changes to the data structure of board,
+       I don't want those changes to also break Player. It is reasonable for
+       Game_Board to be responsible for translating "1c" to index 2.
+     - Complications?
+       1. I am a little concerned about how the AI is going to interact with
+          Game_Board. It is going to be interesting to figure that out.
