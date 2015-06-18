@@ -66,3 +66,9 @@ This text file is for organizing my thoughts.
      - Complications?
        1. I am a little concerned about how the AI is going to interact with
           Game_Board. It is going to be interesting to figure that out.
+* Implementing Testing
+  I am currently attempting to implement an automated testing framework for my
+  game. This is something I have never attempted before, but I think that TDD
+  is a really important idea. Installation of Mocha and Unit.js seems successful.
+  I am struggling with actually implementing some automated tests.
+  I might need to seek some advice.
