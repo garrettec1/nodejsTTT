@@ -48,13 +48,19 @@ Game_Board.prototype._check_move = function(move){
     // I am aware there are some really cool functional ways to do this.
     // I will try to figure them out later.
     return((row == 1 || row == 2 || row == 3) &&
-           (column == 'a' || column == 'b' || column =='c'))
+           (column == 'a' || column == 'b' || column =='c'));
 };
 
-// Again, keeping it simple for now. I will assume a valid move is passed
+
 Game_Board.prototype.make_move = function(move, piece){
-    var move_index = this._find_index(move);
-    this.board[move_index] = piece;
+    if (this._check_move(move)){
+        var move_index = this._find_index(move);
+        this.board[move_index] = piece;
+        return(true);
+    } else{
+        return(false);
+    }
+
 };
 
 var testing = new Game_Board();
