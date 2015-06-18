@@ -42,7 +42,7 @@ Game_Board.prototype._find_index = function(move){
 };
 
 //Some repeated code here for row and column. Function it?
-// Finds if this is a move that exists on the board
+// Checks for valid move input: is this is a move that exists on the board?
 Game_Board.prototype._check_move = function(move){
     var row = move.charAt(0);
     var column = move.charAt(1);
@@ -52,6 +52,7 @@ Game_Board.prototype._check_move = function(move){
            (column == 'a' || column == 'b' || column =='c'));
 };
 
+// Checks to ensure the space is empty and available to take a move.
 Game_Board.prototype._is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
