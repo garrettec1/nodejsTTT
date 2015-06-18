@@ -2,15 +2,16 @@
 //Garrett Fuller
 //Authored June 2015
 
+// for use with .format
 var util = require('util');
 
-// rough mock up of board object
 // constructor
+// Instantiates an empty game board.
 function Game_Board() {
     this.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 }
 // class methods
-// going to do this in the most straight forward possible way first
+// Displays the game board. Currently not very pretty
 Game_Board.prototype.display_board = function(){
     //console.trace();
     console.log(util.format("\n\t  a   b   c"));
@@ -24,6 +25,7 @@ Game_Board.prototype.display_board = function(){
                             this.board[8]));
 };
 
+// Takes a valid move string eg '1a' and converts it to the index of board[]
 Game_Board.prototype._find_index = function(move){
     var row = move.charAt(0);
     var column = move.charAt(1);
@@ -57,6 +59,8 @@ Game_Board.prototype._is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
 
+// Takes a move string param eg '1a' and a piece 'X' or 'O' from Player
+// Returns Boolean False if not a valid move.
 Game_Board.prototype.make_move = function(move, piece){
     if (this._check_move(move)){
         var move_index = this._find_index(move);
@@ -67,9 +71,13 @@ Game_Board.prototype.make_move = function(move, piece){
     } else{
         return(false);
     }
-
 };
 
+
+
+
+
+// rough testing. Needs automated testing badly.
 var testing = new Game_Board();
 testing.display_board();
 console.log('1a');
