@@ -20,17 +20,13 @@ describe('Game_Board', function(){
             expect(board._check_move('2A')).to.equal(false);
         });
     });
+    var valid_indexes;
     describe('#_find_index', function(){
         it('should return a valid board index for a valid move string input',function(){
-            expect(board._find_index('1a')).to.equal(0);
-            expect(board._find_index('1b')).to.equal(1);
-            expect(board._find_index('1c')).to.equal(2);
-            expect(board._find_index('2a')).to.equal(3);
-            expect(board._find_index('2b')).to.equal(4);
-            expect(board._find_index('2c')).to.equal(5);
-            expect(board._find_index('3a')).to.equal(6);
-            expect(board._find_index('3b')).to.equal(7);
-            expect(board._find_index('3c')).to.equal(8);
+            valid_indexes = ['1a','1b','1c','2a','2b','2c','3a','3b','3c'];
+            valid_indexes.forEach(function(element, index){
+                expect(board._find_index(element)).to.equal(index);
+            });
         });
     });
 });
