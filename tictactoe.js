@@ -87,18 +87,20 @@ function Game(){
 }
 
 module.exports.board = Game_Board;
-// // rough testing. Needs automated testing badly.
-// var testing = new Game_Board();
-// testing.display_board();
+// rough testing. Needs automated testing badly.
+var testing = new Game_Board();
+testing.display_board();
 // console.log('1a');
 // testing.make_move('1a','X');
 // testing.display_board();
-// console.log('2a');
-// testing.make_move('2a','X');
-// testing.display_board();
-// console.log('2a');
-// console.log(testing.make_move('2a','O'));
-// testing.display_board();
+console.log('2a');
+console.log(testing._is_move_index_empty(3), 'is move empty');
+console.log(testing.make_move('2a','X'), 'testing.make_move');
+testing.display_board();
+console.log('2a');
+console.log(testing._is_move_index_empty(3), 'is move empty');
+console.log(testing.make_move('2a','O'), 'testing.make_move');
+testing.display_board();
 // console.log('4a');
 // console.log(testing.make_move('4a','O'));
 // testing.display_board();
