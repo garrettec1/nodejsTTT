@@ -29,4 +29,23 @@ describe('Game_Board', function(){
             });
         });
     });
+
+    describe('#_is_move_index_empty', function(){
+        it('should return true if the board index is empty',function() {
+            for (var i = 0; i < 9; i++){
+                expect(board._is_move_index_empty(i)).to.equal(true);
+            };
+        });
+        it('should return false when board index is occupied', function() {
+            var i;
+            for(i = 0; i < 9; i++){
+                board[i] = 'X';
+
+            };
+            for (i = 0; i < 9; i++){
+                console.log(i, board[i]);
+                expect(board._is_move_index_empty(i)).to.equal(false);
+            };
+        });
+    });
 });
