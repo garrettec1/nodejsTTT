@@ -66,11 +66,13 @@ Game_Board.prototype.make_move = function(move, piece){
         var move_index = this._find_index(move);
         if (this._is_move_index_empty(move_index)){
             this.board[move_index] = piece;
-        }
-        return(true);
-    } else{
-        return(false);
-    }
+            return(true);
+        } else{
+            return(false);
+        };
+    }else{
+            return(false);
+    };
 };
 
 // constructor
