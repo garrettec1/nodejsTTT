@@ -31,19 +31,18 @@ Game_Board.prototype._is_move_index_empty = function(move_index){
 
 // Takes a move string param eg '1a' and a piece 'X' or 'O' from Player
 // Returns Boolean False if not a valid move.
-Game_Board.prototype.make_move = function(move, piece){
-    if (this._check_move(move)){
-        var move_index = this._find_index(move);
-        if (this._is_move_index_empty(move_index)){
-            this.board[move_index] = piece;
-            return(true);
-        } else{
-            return(false);
-        };
+Game_Board.prototype.make_move = function(index, piece){
+    if (this._is_move_index_empty(index)){
+        this.board[index] = piece;
+        return(true);
     }else{
-            return(false);
+        return(false);
     };
+
+
 };
+
+
 
 // constructor
 // Builds a player object.
