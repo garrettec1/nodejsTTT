@@ -44,6 +44,7 @@ describe('Game_Board', function(){
             };
             for (i = 0; i < 9; i++){
                 console.log(i, board[i]);
+                console.log(board.display_board());
                 expect(board._is_move_index_empty(i)).to.equal(false);
             };
         });
