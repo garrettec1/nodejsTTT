@@ -13,7 +13,6 @@ function Game_Board() {
 // class methods
 // Displays the game board. Currently not very pretty
 Game_Board.prototype.display_board = function(){
-    //console.trace();
     console.log(util.format("\n\t  a   b   c"));
     console.log(util.format('\t1 %s | %s | %s', this.board[0], this.board[1],
                             this.board[2]));
@@ -24,8 +23,6 @@ Game_Board.prototype.display_board = function(){
     console.log(util.format('\t3 %s | %s | %s', this.board[6], this.board[7],
                             this.board[8]));
 };
-
-
 
 // Checks to ensure the space is empty and available to take a move.
 Game_Board.prototype._is_move_index_empty = function(move_index){
@@ -49,15 +46,14 @@ Game_Board.prototype.make_move = function(move, piece){
 };
 
 // constructor
-// Builds a player object. Currently only human players can be created.
-// Need to think about who exactly will be making the call to this constructor.
+// Builds a player object.
 // Currently Players primary job is interfacing with the human player.
 function Player(name, piece){
     this.name = name;
     this.piece = 'X' || 'O';
 }
 
-
+// Class methods
 // Takes a valid move string eg '1a' and converts it to the index of board[]
 Player.prototype._find_index = function(move){
     var row = move.charAt(0);
@@ -87,24 +83,30 @@ Player.prototype._check_move = function(move){
            (column == 'a' || column == 'b' || column =='c'));
 };
 
+
+// constructor
+// The Game class will be responsible for communicating and directing messages
+// between Player and Game_Board.
 function Game(){
 }
 
 module.exports.board = Game_Board;
+
+
 // rough testing. Needs automated testing badly.
-var testing = new Game_Board();
-testing.display_board();
+// var testing = new Game_Board();
+// testing.display_board();
 // console.log('1a');
 // testing.make_move('1a','X');
 // testing.display_board();
-console.log('2a');
-console.log(testing._is_move_index_empty(3), 'is move empty');
-console.log(testing.make_move('2a','X'), 'testing.make_move');
-testing.display_board();
-console.log('2a');
-console.log(testing._is_move_index_empty(3), 'is move empty');
-console.log(testing.make_move('2a','O'), 'testing.make_move');
-testing.display_board();
+// console.log('2a');
+// console.log(testing._is_move_index_empty(3), 'is move empty');
+// console.log(testing.make_move('2a','X'), 'testing.make_move');
+// testing.display_board();
+// console.log('2a');
+// console.log(testing._is_move_index_empty(3), 'is move empty');
+// console.log(testing.make_move('2a','O'), 'testing.make_move');
+// testing.display_board();
 // console.log('4a');
 // console.log(testing.make_move('4a','O'));
 // testing.display_board();
