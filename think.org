@@ -111,3 +111,8 @@ This text file is for organizing my thoughts.
      order to make testing it's bits easier.
    - Removing the responsibilty for translating moves will reduce complexity.
      I can give that responsibility to the Player class?
+** Struggling with test first.
+   - I am not ready. I am still trying to learn how to object orient, and I am
+     having a hard time reconciling that with writing tests first.
+   - Unit testing: I think writing unit tests as I write code is probably a fair
+     spot to start at.
