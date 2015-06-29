@@ -99,3 +99,15 @@ This text file is for organizing my thoughts.
    So I should build the player to default to human, but leave space for that
    to be changed later.
 ** Should I have a Game object?
+* Testing issues
+** issues with testing _is_move_empty
+   - Oddly the code works fine, but testing it in my automated tests is proving
+     complicated.
+   - I need to fill a board to test the function, but I need to call make_move
+     to fill the board.
+   - I could provide access to the board with a setter, but that idea makes my
+     skin crawl.
+   - It seems like the idea should be to reduce the complexity of make move in
+     order to make testing it's bits easier.
+   - Removing the responsibilty for translating moves will reduce complexity.
+     I can give that responsibility to the Player class?
