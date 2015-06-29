@@ -47,12 +47,10 @@ describe('Game_Board', function(){
         it('should return false when board index is occupied', function() {
             var i;
             for(i = 0; i < 9; i++){
-                board[i] = 'X';
-
+                board.make_move(i,'X');
             };
+            console.log(board.display_board());
             for (i = 0; i < 9; i++){
-                console.log(i, board[i]);
-                console.log(board.display_board());
                 expect(board._is_move_index_empty(i)).to.equal(false);
             };
         });
