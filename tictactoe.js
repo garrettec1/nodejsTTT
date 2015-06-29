@@ -38,8 +38,6 @@ Game_Board.prototype.make_move = function(index, piece){
     }else{
         return(false);
     };
-
-
 };
 
 
@@ -90,7 +88,7 @@ function Game(){
 }
 
 module.exports.board = Game_Board;
-
+module.exports.player = Player;
 
 // rough testing. Needs automated testing badly.
 // var testing = new Game_Board();
