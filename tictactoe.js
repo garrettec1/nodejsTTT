@@ -79,11 +79,11 @@ Game_Board.prototype.make_move = function(move, piece){
 // Builds a player object. Currently only human players can be created.
 // Need to think about who exactly will be making the call to this constructor.
 // Currently Players primary job is interfacing with the human player.
-function Player(name, identity, piece){
+function Player(name, piece){
     this.name = name;
-    this.identity = human;
     this.piece = 'X' || 'O';
 }
+
 
 function Game(){
 }
