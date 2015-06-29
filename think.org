@@ -111,6 +111,13 @@ This text file is for organizing my thoughts.
      order to make testing it's bits easier.
    - Removing the responsibilty for translating moves will reduce complexity.
      I can give that responsibility to the Player class?
+*** Thoughts on solution:
+    - The test I wrote for _is_move_index_empty depends on make_move working.
+      This is problematic.
+    - I need some automated way to create a board filled with arbitrary
+      pieces. I will need this type of thing to test for winning moves and such.
+    - Should I make some kind of mock object, or build objects and make moves...
+      I really have no idea.
 ** Struggling with test first.
    - I am not ready. I am still trying to learn how to object orient, and I am
      having a hard time reconciling that with writing tests first.
