@@ -10,7 +10,14 @@ var util = require('util');
 function Game_Board() {
     this.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 }
+
+
 // class methods
+// returns the state of a board index. Yay abstraction!
+Game_Board.prototype.get_board_index_state = function(board_index){
+    return(this.board[board_index]);
+}
+
 // Displays the game board. Currently not very pretty
 Game_Board.prototype.display_board = function(){
     console.log(util.format("\n\t  a   b   c"));
