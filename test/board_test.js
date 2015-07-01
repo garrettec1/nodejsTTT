@@ -36,7 +36,12 @@ describe('Game_Board', function(){
     beforeEach(function(){
        board = new ttt.board();
     });
-
+    describe('#make_move', function(){
+        it('should add an X in an empty space', function() {
+            board.make_move(0,'X');
+            expect(board.get_board_index_state(0).to.equal('X'));
+        });
+    });
 
     describe('#_is_move_index_empty', function(){
         it('should return true if the board index is empty',function() {
@@ -49,7 +54,6 @@ describe('Game_Board', function(){
             for(i = 0; i < 9; i++){
                 board.make_move(i,'X');
             };
-            console.log(board.display_board());
             for (i = 0; i < 9; i++){
                 expect(board._is_move_index_empty(i)).to.equal(false);
             };
