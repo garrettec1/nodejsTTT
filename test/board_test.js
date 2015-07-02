@@ -49,6 +49,11 @@ describe('Game_Board', function(){
             board.make_move(7,'O');
             assert.equal(board.get_board_index_state(7), 'O');
         });
+        it('should not make a move in a filled space', function() {
+            board.make_move(0, 'X');
+            board.make_move(0, 'O');
+            assert.equal(board.get_board_index_state(0), 'X');
+        });
     });
 
     describe('#_is_move_index_empty', function(){
