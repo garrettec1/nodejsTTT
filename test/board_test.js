@@ -1,4 +1,4 @@
-//var assert = require("assert");
+assert = require("assert");
 var expect = require('chai').expect;
 var ttt = require('../tictactoe.js');
 
@@ -42,7 +42,8 @@ describe('Game_Board', function(){
             console.log(board.display_board());
             console.log(board.get_board_index_state(0)== 'X');
             // I expect this is failing because .equal is === not ==
-            expect(board.get_board_index_state(0).to.equal('X'));
+            //expect(board.get_board_index_state(0).to.equal('X'));
+            assert.equal(board.get_board_index_state(0), 'X');
         });
     });
 
