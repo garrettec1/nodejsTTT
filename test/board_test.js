@@ -39,6 +39,9 @@ describe('Game_Board', function(){
     describe('#make_move', function(){
         it('should add an X in an empty space', function() {
             board.make_move(0,'X');
+            console.log(board.display_board());
+            console.log(board.get_board_index_state(0)== 'X');
+            // I expect this is failing because .equal is === not ==
             expect(board.get_board_index_state(0).to.equal('X'));
         });
     });

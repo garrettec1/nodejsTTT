@@ -15,8 +15,8 @@ function Game_Board() {
 // class methods
 // returns the state of a board index. Yay abstraction!
 Game_Board.prototype.get_board_index_state = function(board_index){
-    return(this.board[board_index]);
-}
+    return (this.board[board_index]);
+};
 
 // Displays the game board. Currently not very pretty
 Game_Board.prototype.display_board = function(){
@@ -100,9 +100,11 @@ module.exports.player = Player;
 // rough testing. Needs automated testing badly.
 // var testing = new Game_Board();
 // testing.display_board();
-// console.log('1a');
-// testing.make_move('1a','X');
-// testing.display_board();
+//console.log('1a');
+//testing.make_move('0','X');
+//testing.display_board();
+//console.log(testing.get_board_index_state(0));
+//console.log(testing.get_board_index_state(0)== 'X');
 // console.log('2a');
 // console.log(testing._is_move_index_empty(3), 'is move empty');
 // console.log(testing.make_move('2a','X'), 'testing.make_move');
