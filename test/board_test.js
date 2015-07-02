@@ -45,6 +45,10 @@ describe('Game_Board', function(){
             //expect(board.get_board_index_state(0).to.equal('X'));
             assert.equal(board.get_board_index_state(0), 'X');
         });
+        it('should make an O in an empty space', function() {
+            board.make_move(7,'O');
+            assert.equal(board.get_board_index_state(7), 'O');
+        });
     });
 
     describe('#_is_move_index_empty', function(){
