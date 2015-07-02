@@ -54,6 +54,14 @@ describe('Game_Board', function(){
             board.make_move(0, 'O');
             assert.equal(board.get_board_index_state(0), 'X');
         });
+        it('should return true when it makes a move', function() {
+            assert.equal(board.make_move(0, 'X'), true);
+        });
+        it('should return false if that space is already occupied',
+           function() {
+               board.make_move(0, 'X');
+               assert.equal(board.make_move(0, 'X'), false);
+           });
     });
 
     describe('#_is_move_index_empty', function(){
