@@ -2,6 +2,20 @@ assert = require("assert");
 var expect = require('chai').expect;
 var ttt = require('../tictactoe.js');
 
+describe( 'Game', function(){
+    // I think of the Game object as the object that controls the flow of
+    // the game. It tells the other objects when to enact their responsibilities
+    // and all communication between objects is to or from the Game object.
+
+    // Should create a Board object
+    // Should create a Player object
+    // Should tell Player to get a move
+    // Should tell Board a move has been made
+    // Should tell Board to check for a win
+
+});
+
+
 describe('Player', function(){
     var player;
     beforeEach(function(){
