@@ -53,24 +53,24 @@ describe('Game_Board', function(){
     describe('#make_move', function(){
         it('should add an X in an empty space', function() {
             board.make_move(0,'X');
-            assert.equal(board.get_board_index_state(0), 'X');
+            expect(board.get_board_index_state(0)).to.equal('X');
         });
         it('should make an O in an empty space', function() {
             board.make_move(7,'O');
-            assert.equal(board.get_board_index_state(7), 'O');
+            expect(board.get_board_index_state(7)).to.equal('O');
         });
         it('should not make a move in a filled space', function() {
             board.make_move(0, 'X');
             board.make_move(0, 'O');
-            assert.equal(board.get_board_index_state(0), 'X');
+            expect(board.get_board_index_state(0)).to.equal('X');
         });
         it('should return true when it makes a move', function() {
-            assert.equal(board.make_move(0, 'X'), true);
+            expect(board.make_move(0,'X')).to.equal(true);
         });
         it('should return false if that space is already occupied',
            function() {
                board.make_move(0, 'X');
-               assert.equal(board.make_move(0, 'X'), false);
+               expect(board.make_move(0,'O')).to.equal(false);
            });
     });
 
