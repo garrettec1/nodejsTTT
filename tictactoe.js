@@ -87,13 +87,32 @@ Player.prototype._check_move = function(move){
            (column == 'a' || column == 'b' || column =='c'));
 };
 
+Player.prototype.get_move = function(){
+    var move;
+
+
+};
+
 
 // constructor
 // The Game class will be responsible for communicating and directing messages
 // between Player and Game_Board.
 function Game(){
+    var board;
+    var player1;
+    var player2;
 }
 
+Game.prototype.instantiate_game_objects = function(){
+    this.board = new Game_Board();
+    this.player1 = new Player('player1', 'X');
+    this.player2 = new Player('player2', 'O');
+};
+
+Game.prototype.get_player_move = function(){
+    var move = this.player1.get_move();
+};
+module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
 
@@ -122,13 +141,3 @@ module.exports.player = Player;
 // console.log('2');
 // console.log(testing.make_move('2','O'));
 // testing.display_board();
-Game.prototype.instantiate_game_objects = function(){
-    this.board = new Game_Board();
-    this.player1 = new Player('player1', 'X');
-    this.player2 = new Player('player2', 'O');
-};
-
-Game.prototype.get_player_move = function(){
-    var move = this.player1.get_move();
-};
-module.exports.game = Game;
