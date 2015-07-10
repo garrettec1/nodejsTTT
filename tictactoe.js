@@ -122,3 +122,13 @@ module.exports.player = Player;
 // console.log('2');
 // console.log(testing.make_move('2','O'));
 // testing.display_board();
+Game.prototype.instantiate_game_objects = function(){
+    this.board = new Game_Board();
+    this.player1 = new Player('player1', 'X');
+    this.player2 = new Player('player2', 'O');
+};
+
+Game.prototype.get_player_move = function(){
+    var move = this.player1.get_move();
+};
+module.exports.game = Game;
