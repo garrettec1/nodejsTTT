@@ -123,3 +123,20 @@ This text file is for organizing my thoughts.
      having a hard time reconciling that with writing tests first.
    - Unit testing: I think writing unit tests as I write code is probably a fair
      spot to start at.
+* Implementing the Game.
+** getting input from user.
+   - WOW. Getting user input from the console is more complicated than I
+     expected.
+   - I am trying to model it in a way that causes it to behave as if it
+     were running syncronously not asynch.
+   - The flow is a bit awkward to conceptualize.
+     1. Game calls Player ask_move:
+     2. Player asks a move which returns a string.
+     3. String is now in Game:
+     4. Game calls Player find_index(move)
+     5. Player returns a move index to game
+     6. Game calls Game_Board make_move(index)
+        + Returns true if the move is made
+        + Returns false if move cannot be made.
+     7. If false Game (prints a message?) and calls ask_move
+   - See. Having Game as the intermediary is increasing complexity.
