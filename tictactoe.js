@@ -32,14 +32,14 @@ Game_Board.prototype.display_board = function(){
 };
 
 // Checks to ensure the space is empty and available to take a move.
-Game_Board.prototype._is_move_index_empty = function(move_index){
+Game_Board.prototype.is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
 
 // Takes a move string param eg '1a' and a piece 'X' or 'O' from Player
 // Returns Boolean False if not a valid move.
 Game_Board.prototype.make_move = function(index, piece){
-    if (this._is_move_index_empty(index)){
+    if (this.is_move_index_empty(index)){
         this.board[index] = piece;
         return(true);
     }else{
@@ -59,7 +59,7 @@ function Player(name, piece){
 
 // Class methods
 // Takes a valid move string eg '1a' and converts it to the index of board[]
-Player.prototype._find_index = function(move){
+Player.prototype.find_index = function(move){
     var row = move.charAt(0);
     var column = move.charAt(1);
     var board_index = 0;
@@ -78,7 +78,7 @@ Player.prototype._find_index = function(move){
 
 //Some repeated code here for row and column. Function it?
 // Checks for valid move input: is this a valid coordinate?
-Player.prototype._check_move = function(move){
+Player.prototype.check_move = function(move){
     var row = move.charAt(0);
     var column = move.charAt(1);
     // I am aware there are some really cool functional ways to do this.

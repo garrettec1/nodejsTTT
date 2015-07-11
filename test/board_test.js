@@ -22,23 +22,23 @@ describe('Player', function(){
         player = new ttt.player();
     });
     // describe the name of the method being tested
-    describe('#_check_move', function(){
+    describe('#check_move', function(){
         it('should validate a properly formatted  move', function(){
             //var board = new ttt.board();
-            expect(player._check_move("1a")).to.equal(true);
+            expect(player.check_move("1a")).to.equal(true);
         });
         it('rejects improrperly formatted moves', function() {
             //var board = new ttt.board();
-            expect(player._check_move('2A')).to.equal(false);
+            expect(player.check_move('2A')).to.equal(false);
         });
     });
     var valid_indexes;
-    describe('#_find_index', function(){
+    describe('#find_index', function(){
         it('should return a valid board index for a valid move string input'
            ,function(){
             valid_indexes = ['1a','1b','1c','2a','2b','2c','3a','3b','3c'];
             valid_indexes.forEach(function(element, index){
-                expect(player._find_index(element)).to.equal(index);
+                expect(player.find_index(element)).to.equal(index);
             });
         });
     });
@@ -74,10 +74,10 @@ describe('Game_Board', function(){
            });
     });
 
-    describe('#_is_move_index_empty', function(){
+    describe('#is_move_index_empty', function(){
         it('should return true if the board index is empty',function() {
             for (var i = 0; i < 9; i++){
-                expect(board._is_move_index_empty(i)).to.equal(true);
+                expect(board.is_move_index_empty(i)).to.equal(true);
             };
         });
         it('should return false when board index is occupied', function() {
@@ -86,7 +86,7 @@ describe('Game_Board', function(){
                 board.make_move(i,'X');
             };
             for (i = 0; i < 9; i++){
-                expect(board._is_move_index_empty(i)).to.equal(false);
+                expect(board.is_move_index_empty(i)).to.equal(false);
             };
         });
     });
