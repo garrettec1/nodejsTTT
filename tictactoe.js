@@ -87,6 +87,7 @@ Player.prototype.check_move = function(move){
            (column == 'a' || column == 'b' || column =='c'));
 };
 
+// called by Player, will return valid formatted move input from player
 Player.prototype.ask_move = function(question, callback){
     var stdin = process.stdin, stdout = process.stdout;
 
@@ -103,6 +104,8 @@ Player.prototype.ask_move = function(question, callback){
             ask("Enter your move", callback);
         }
         // must not forget a process.exit()
+        // return somehow, need to do some research on the side effects of this
+        // callback(data) thing. Could just try to jam it in.
     });
 };
 
