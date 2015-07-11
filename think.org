@@ -131,8 +131,9 @@ This text file is for organizing my thoughts.
      were running syncronously not asynch.
    - The flow is a bit awkward to conceptualize.
      1. Game calls Player ask_move:
-     2. Player asks a move which returns a string.
-     3. String is now in Game:
+     2. Player asks a move which returns a string move.
+        - ask move checks for valid input format
+     3. String move is in Game.
      4. Game calls Player find_index(move)
      5. Player returns a move index to game
      6. Game calls Game_Board make_move(index)
@@ -140,3 +141,9 @@ This text file is for organizing my thoughts.
         + Returns false if move cannot be made.
      7. If false Game (prints a message?) and calls ask_move
    - See. Having Game as the intermediary is increasing complexity.
+** Rethinking flow
+   - How can I simplify this?
+   - I can make a function in Player that calls ask_move, and find_index
+     and returns the index.
+   - Should I do that as a callback? I am still struggling a bit with the
+     concept of callbacks.
