@@ -52,9 +52,8 @@ Game_Board.prototype.make_move = function(index, piece){
 // constructor
 // Builds a player object.
 // Currently Players primary job is interfacing with the human player.
-function Player(name, piece){
-    this.name = name;
-    this.piece = 'X' || 'O';
+function Player (piece){
+    this.piece = piece;
 }
 
 // Class methods
