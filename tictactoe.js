@@ -88,24 +88,7 @@ Player.prototype.check_move = function(move){
 
 // called by Player, will return valid formatted move input from player
 Player.prototype.ask_move = function(question, callback){
-    var stdin = process.stdin, stdout = process.stdout;
 
-    stdin.resume();
-    stdout.write(question);
-
-    stdin.once('data', function(data) {
-        data = data.toString().trim();
-
-        if (this.check_move(data)) {
-            callback(data);
-        } else {
-            stdout.write("Not a valid move input.\n");
-            ask("Enter your move", callback);
-        }
-        // must not forget a process.exit()
-        // return somehow, need to do some research on the side effects of this
-        // callback(data) thing. Could just try to jam it in.
-    });
 };
 
 
