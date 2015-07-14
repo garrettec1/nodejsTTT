@@ -96,16 +96,11 @@ Player.prototype.ask_move = function(question, callback){
 // The Game class will be responsible for communicating and directing messages
 // between Player and Game_Board.
 function Game(){
-    var board;
-    var player1;
-    var player2;
+    var board = new Game_Board();
+    var player1= new Player('X');
+    var player2 new Player('player2', 'O');
 }
 
-Game.prototype.instantiate_game_objects = function(){
-    this.board = new Game_Board();
-    this.player1 = new Player('player1', 'X');
-    this.player2 = new Player('player2', 'O');
-};
 
 Game.prototype.get_player_move = function(){
     var move = this.player1.get_move();
