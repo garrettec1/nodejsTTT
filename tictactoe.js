@@ -39,12 +39,7 @@ Game_Board.prototype.is_move_index_empty = function(move_index){
 // Takes a move string param eg '1a' and a piece 'X' or 'O' from Player
 // Returns Boolean False if not a valid move.
 Game_Board.prototype.make_move = function(index, piece){
-    if (this.is_move_index_empty(index)){
-        this.board[index] = piece;
-        return(true);
-    }else{
-        return(false);
-    };
+    this.board[index] = piece;
 };
 
 
