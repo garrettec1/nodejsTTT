@@ -120,29 +120,3 @@ Game.prototype.get_player_move = function(){
 module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
-
-// rough testing. Needs automated testing badly.
-// var testing = new Game_Board();
-// testing.display_board();
-//console.log('1a');
-//testing.make_move('0','X');
-//testing.display_board();
-//console.log(testing.get_board_index_state(0));
-//console.log(testing.get_board_index_state(0)== 'X');
-// console.log('2a');
-// console.log(testing._is_move_index_empty(3), 'is move empty');
-// console.log(testing.make_move('2a','X'), 'testing.make_move');
-// testing.display_board();
-// console.log('2a');
-// console.log(testing._is_move_index_empty(3), 'is move empty');
-// console.log(testing.make_move('2a','O'), 'testing.make_move');
-// testing.display_board();
-// console.log('4a');
-// console.log(testing.make_move('4a','O'));
-// testing.display_board();
-// console.log('1G');
-// console.log(testing.make_move('1G','O'));
-// testing.display_board();
-// console.log('2');
-// console.log(testing.make_move('2','O'));
-// testing.display_board();
