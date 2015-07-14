@@ -42,8 +42,6 @@ Game_Board.prototype.make_move = function(index, piece){
     this.board[index] = piece;
 };
 
-
-
 // constructor
 // Builds a player object.
 // Currently Players primary job is interfacing with the human player.
@@ -96,6 +94,19 @@ function Game(){
     var player2 = new Player('O');
 }
 
+//Takes string input from player, validates and returns bool
+Game.prototype.validate_move = function(input){
+    var index;
+    if( Player.check_move(input)){
+        index = Player.find_index(input);
+    }else{
+        return (false);
+    }if (Game_Board.is_move_index_empty(index)){
+        return(true);
+    }else{
+        return (false);
+    }
+};
 
 Game.prototype.get_player_move = function(){
     var move = this.player1.get_move();
