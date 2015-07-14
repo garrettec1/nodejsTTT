@@ -97,8 +97,8 @@ Player.prototype.ask_move = function(question, callback){
 // between Player and Game_Board.
 function Game(){
     var board = new Game_Board();
-    var player1= new Player('X');
-    var player2 new Player('player2', 'O');
+    var player1 = new Player('X');
+    var player2 = new Player('O');
 }
 
 
