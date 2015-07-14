@@ -94,6 +94,12 @@ function Game(){
     var player2 = new Player('O');
 }
 
+Game.prototype.do_move = function(usr_input){
+    var move_index;
+    move_index = Player.find_index(usr_input);
+    Game_Board.make_move(move_index);
+};
+
 //Takes string input from player, validates and returns bool
 Game.prototype.validate_move = function(input){
     var index;
