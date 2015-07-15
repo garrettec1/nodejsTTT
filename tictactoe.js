@@ -103,11 +103,11 @@ Game.prototype.do_move = function(usr_input){
 //Takes string input from player, validates and returns bool
 Game.prototype.validate_move = function(input){
     var index;
-    if( game.player1.check_move(input)){
-        index = game.player1.find_index(input);
+    if( this.player1.check_move(input)){
+        index = this.player1.find_index(input);
     }else{
         return (false);
-    }if (game.board.is_move_index_empty(index)){
+    }if (this.board.is_move_index_empty(index)){
         return(true);
     }else{
         return (false);
@@ -117,6 +117,7 @@ Game.prototype.validate_move = function(input){
 Game.prototype.get_player_move = function(){
     var move = this.player1.get_move();
 };
+
 module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
