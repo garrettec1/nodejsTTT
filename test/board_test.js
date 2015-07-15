@@ -12,7 +12,30 @@ describe( 'Game', function(){
     // Should tell Player to get a move
     // Should tell Board a move has been made
     // Should tell Board to check for a win
-
+    var game;
+    var player1;
+    var player2;
+    var board;
+    beforeEach(function(){
+        game = new ttt.game();
+        player1 = game.player1;
+        player2 = game.player2;
+        board = game.board;
+    });
+    describe('#validate_move', function(){
+        it('should validate a properly formatted move input', function(){
+            expect(game.validate_move('1a')).to.equal(true);
+        });
+        it('should reject improperly formatted move inputs', function(){
+            expect(game.validate_move('1A')).to.equal(false);
+            expect(game.validate_move('a1')).to.equal(false);
+            expect(game.validate_move('0')).to.equal(false);
+        });
+        it('should reject move to a filled space', function(){
+            board.make_move(0, 'X');
+            expect(game.validate_move('1a')).to.equal(false);
+        });
+    });
 });
 
 
@@ -59,19 +82,19 @@ describe('Game_Board', function(){
             board.make_move(7,'O');
             expect(board.get_board_index_state(7)).to.equal('O');
         });
-        it('should not make a move in a filled space', function() {
-            board.make_move(0, 'X');
-            board.make_move(0, 'O');
-            expect(board.get_board_index_state(0)).to.equal('X');
-        });
-        it('should return true when it makes a move', function() {
-            expect(board.make_move(0,'X')).to.equal(true);
-        });
-        it('should return false if that space is already occupied',
-           function() {
-               board.make_move(0, 'X');
-               expect(board.make_move(0,'O')).to.equal(false);
-           });
+        // it('should not make a move in a filled space', function() {
+        //     board.make_move(0, 'X');
+        //     board.make_move(0, 'O');
+        //     expect(board.get_board_index_state(0)).to.equal('X');
+        // });
+        // it('should return true when it makes a move', function() {
+        //     expect(board.make_move(0,'X')).to.equal(true);
+        // });
+        // it('should return false if that space is already occupied',
+        //    function() {
+        //        board.make_move(0, 'X');
+        //        expect(board.make_move(0,'O')).to.equal(false);
+        //    });
     });
 
     describe('#is_move_index_empty', function(){
