@@ -89,9 +89,9 @@ Player.prototype.ask_move = function(question, callback){
 // The Game class will be responsible for communicating and directing messages
 // between Player and Game_Board.
 function Game(){
-    var board = new Game_Board();
-    var player1 = new Player('X');
-    var player2 = new Player('O');
+    this.board = new Game_Board();
+    this.player1 = new Player('X');
+    this.player2 = new Player('O');
 }
 
 Game.prototype.do_move = function(usr_input){
@@ -103,11 +103,11 @@ Game.prototype.do_move = function(usr_input){
 //Takes string input from player, validates and returns bool
 Game.prototype.validate_move = function(input){
     var index;
-    if( Player.check_move(input)){
-        index = Player.find_index(input);
+    if( game.player1.check_move(input)){
+        index = game.player1.find_index(input);
     }else{
         return (false);
-    }if (Game_Board.is_move_index_empty(index)){
+    }if (game.board.is_move_index_empty(index)){
         return(true);
     }else{
         return (false);
