@@ -49,8 +49,25 @@ function Player (piece){
 }
 
 // Class methods
+
+// constructor
+// The Game class will be responsible for communicating and directing messages
+// between Player and Game_Board.
+function Game(){
+    this.board = new Game_Board();
+    this.player1 = new Player('X');
+    this.player2 = new Player('O');
+}
+
+// causes one move to happen. Likely to change
+Game.prototype.do_move = function(usr_input){
+    var move_index;
+    move_index = this.find_index(usr_input);
+    this.board.make_move(move_index);
+};
+
 // Takes a valid move string eg '1a' and converts it to the index of board[]
-Player.prototype.find_index = function(move){
+Game.prototype.find_index = function(move){
     var row = move.charAt(0);
     var column = move.charAt(1);
     var board_index = 0;
@@ -68,7 +85,7 @@ Player.prototype.find_index = function(move){
 };
 
 // Checks for valid move input: is this a valid coordinate?
-Player.prototype.check_move = function(move){
+Game.prototype.check_move = function(move){
     var row = move.charAt(0);
     var column = move.charAt(1);
     // I am aware there are some really cool functional ways to do this.
@@ -77,27 +94,12 @@ Player.prototype.check_move = function(move){
            (column == 'a' || column == 'b' || column =='c'));
 };
 
-// constructor
-// The Game class will be responsible for communicating and directing messages
-// between Player and Game_Board.
-function Game(){
-    this.board = new Game_Board();
-    this.player1 = new Player('X');
-    this.player2 = new Player('O');
-}
-
-// causes one move to happen. Likely to change
-Game.prototype.do_move = function(usr_input){
-    var move_index;
-    move_index = Player.find_index(usr_input);
-    Game_Board.make_move(move_index);
-};
 
 //Takes string input from stdin listener, validates and returns bool
 Game.prototype.validate_move = function(input){
     var index;
-    if( this.player1.check_move(input)){
-        index = this.player1.find_index(input);
+    if( this.check_move(input)){
+        index = this.find_index(input);
     }else{
         return (false);
     }if (this.board.is_move_index_empty(index)){
