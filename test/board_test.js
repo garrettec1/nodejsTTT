@@ -32,6 +32,24 @@ describe( 'Game', function(){
             expect(game.validate_move('1a')).to.equal(false);
         });
     });
+    describe('#check_move', function(){
+        it('should validate a properly formatted  move', function(){
+            expect(game.check_move("1a")).to.equal(true);
+        });
+        it('rejects improrperly formatted moves', function() {
+            expect(game.check_move('2A')).to.equal(false);
+        });
+    });
+    var valid_indexes;
+    describe('#find_index', function(){
+        it('should return a valid board index for a valid move string input'
+           ,function(){
+               valid_indexes = ['1a','1b','1c','2a','2b','2c','3a','3b','3c'];
+               valid_indexes.forEach(function(element, index){
+                   expect(game.find_index(element)).to.equal(index);
+               });
+           });
+    });
 });
 
 
@@ -41,26 +59,7 @@ describe('Player', function(){
         player = new ttt.player();
     });
     // describe the name of the method being tested
-    describe('#check_move', function(){
-        it('should validate a properly formatted  move', function(){
-            //var board = new ttt.board();
-            expect(player.check_move("1a")).to.equal(true);
-        });
-        it('rejects improrperly formatted moves', function() {
-            //var board = new ttt.board();
-            expect(player.check_move('2A')).to.equal(false);
-        });
-    });
-    var valid_indexes;
-    describe('#find_index', function(){
-        it('should return a valid board index for a valid move string input'
-           ,function(){
-            valid_indexes = ['1a','1b','1c','2a','2b','2c','3a','3b','3c'];
-            valid_indexes.forEach(function(element, index){
-                expect(player.find_index(element)).to.equal(index);
-            });
-        });
-    });
+
 });
 
 //describe the name of the class
