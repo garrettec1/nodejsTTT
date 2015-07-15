@@ -36,8 +36,7 @@ Game_Board.prototype.is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
 
-// Takes a move string param eg '1a' and a piece 'X' or 'O' from Player
-// Returns Boolean False if not a valid move.
+// Takes a valid move and a piece from Game and applies it to the board.
 Game_Board.prototype.make_move = function(index, piece){
     this.board[index] = piece;
 };
@@ -68,7 +67,6 @@ Player.prototype.find_index = function(move){
     return(board_index);
 };
 
-//Some repeated code here for row and column. Function it?
 // Checks for valid move input: is this a valid coordinate?
 Player.prototype.check_move = function(move){
     var row = move.charAt(0);
@@ -79,12 +77,6 @@ Player.prototype.check_move = function(move){
            (column == 'a' || column == 'b' || column =='c'));
 };
 
-// called by Player, will return valid formatted move input from player
-Player.prototype.ask_move = function(question, callback){
-
-};
-
-
 // constructor
 // The Game class will be responsible for communicating and directing messages
 // between Player and Game_Board.
@@ -94,13 +86,14 @@ function Game(){
     this.player2 = new Player('O');
 }
 
+// causes one move to happen. Likely to change
 Game.prototype.do_move = function(usr_input){
     var move_index;
     move_index = Player.find_index(usr_input);
     Game_Board.make_move(move_index);
 };
 
-//Takes string input from player, validates and returns bool
+//Takes string input from stdin listener, validates and returns bool
 Game.prototype.validate_move = function(input){
     var index;
     if( this.player1.check_move(input)){
@@ -114,9 +107,6 @@ Game.prototype.validate_move = function(input){
     }
 };
 
-Game.prototype.get_player_move = function(){
-    var move = this.player1.get_move();
-};
 
 module.exports.game = Game;
 module.exports.board = Game_Board;
