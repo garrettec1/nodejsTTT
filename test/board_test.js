@@ -2,25 +2,21 @@ assert = require("assert");
 var expect = require('chai').expect;
 var ttt = require('../tictactoe.js');
 
-describe( 'Game', function(){
-    // I think of the Game object as the object that controls the flow of
-    // the game. It tells the other objects when to enact their responsibilities
-    // and all communication between objects is to or from the Game object.
+// I think of the Game object as the object that controls the flow of
+// the game. It tells the other objects when to enact their responsibilities
+// and all communication between objects is to or from the Game object.
 
-    // Should create a Board object
-    // Should create a Player object
-    // Should tell Player to get a move
-    // Should tell Board a move has been made
-    // Should tell Board to check for a win
+// Should create a Board object
+// Should create a Player object
+// Should tell Player to get a move
+// Should tell Board a move has been made
+// Should tell Board to check for a win
+
+
+describe( 'Game', function(){
     var game;
-    var player1;
-    var player2;
-    var board;
     beforeEach(function(){
         game = new ttt.game();
-        player1 = game.player1;
-        player2 = game.player2;
-        board = game.board;
     });
     describe('#validate_move', function(){
         it('should validate a properly formatted move input', function(){
@@ -32,7 +28,7 @@ describe( 'Game', function(){
             expect(game.validate_move('0')).to.equal(false);
         });
         it('should reject move to a filled space', function(){
-            board.make_move(0, 'X');
+            game.board.make_move(0, 'X');
             expect(game.validate_move('1a')).to.equal(false);
         });
     });
