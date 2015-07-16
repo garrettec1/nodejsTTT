@@ -123,6 +123,16 @@ Game.prototype.validate_move = function(input){
     }
 };
 
+Game.prototype.get_next_player = function(cur_player, game){
+    if (cur_player === game.player1){
+        cur_player = game.player2;
+    }else{
+        cur_player = game.player1;
+    }
+    game.board.display_board();
+    return(cur_player);
+};
+
 // Broken. Very Broken. Working on it.
 // Deals with the event loop
 Game.prototype.main = function(){
