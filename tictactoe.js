@@ -118,10 +118,11 @@ Game.prototype.validate_move = function(input){
 Game.prototype.main = function(){
     var stdin = process.stdin;
     var current_player = this.player1;
+    var game = this;
 
     console.log("Welcome!");
     console.log("Here is the board.");
-    this.board.display_board();
+    game.board.display_board();
     console.log("Enter a move. eg 1a: ");
 
     process.stdin.on('data', function (text){
