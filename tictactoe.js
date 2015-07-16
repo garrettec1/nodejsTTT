@@ -11,7 +11,6 @@ function Game_Board() {
     this.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 }
 
-
 // class methods
 // returns the state of a board index. Yay abstraction!
 Game_Board.prototype.get_board_index_state = function(board_index){
@@ -41,14 +40,16 @@ Game_Board.prototype.make_move = function(index, piece){
     this.board[index] = piece;
 };
 
+
 // constructor
 // Builds a player object.
-// Currently Players primary job is interfacing with the human player.
+// Because the event loop operates differently then I anticipated. This object
+// will no longer be primarily responsible for interfacing with the player.
+// I anticipate it handling AI in the future.
 function Player (piece){
     this.piece = piece;
 }
 
-// Class methods
 
 // constructor
 // The Game class will be responsible for communicating and directing messages
@@ -59,11 +60,12 @@ function Game(){
     this.player2 = new Player('O');
 }
 
-// causes one move to happen. Likely to change
+// causes one move to happen.
 Game.prototype.do_move = function(usr_input){
     var move_index;
     move_index = this.find_index(usr_input);
     this.board.make_move(move_index);
+    this.board.display_board();
 };
 
 // Takes a valid move string eg '1a' and converts it to the index of board[]
@@ -109,7 +111,37 @@ Game.prototype.validate_move = function(input){
     }
 };
 
+// Broken. Very Broken. Working on it.
+// Deals with the event loop
+Game.prototype.main = function(){
+    var stdin = process.stdin;
+    var current_player = this.player1;
+
+    console.log("Welcome!");
+    console.log("Here is the board.");
+    this.board.display_board();
+    console.log("Enter a move. eg 1a: ");
+
+    process.stdin.on('data', function (text){
+        text = text.toString().trim();
+        if (this.validate_move(text)){
+            this.do_move(text, current_player.piece);
+            if (current_player === player1){
+                current_player = player2;
+            }else{
+                current_player = player1;
+            }
+        }else{
+            console.log("invalid");
+        }
+    });
+};
+
 
 module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
+
+//game = new Game();
+//console.log(game.validate_move('1a'));
+//game.main();
