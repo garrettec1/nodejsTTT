@@ -65,15 +65,10 @@ Game.prototype.do_move = function(usr_input, cur_player, game){
     console.log();
     if (game.validate_move(usr_input)){
         game.board.make_move(game.find_index(usr_input), cur_player.piece );
-        if (cur_player === game.player1){
-            cur_player = game.player2;
-        }else{
-            cur_player = game.player1;
-        }
-        game.board.display_board();
-        return(cur_player);
+        return(true);
     }else{
         game.board.display_board();
+        return(false);
     }
 };
 
@@ -147,7 +142,9 @@ Game.prototype.main = function(){
 
     process.stdin.on('data', function (text){
         text = text.toString().trim();
-        current_player = game.do_move(text, current_player, game);
+        if(game.do_move(text, current_player, game)){
+            current_player = game.get_next_player(current_player, game);
+        }
     });
 };
 
