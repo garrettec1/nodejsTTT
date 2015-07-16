@@ -61,12 +61,22 @@ function Game(){
 }
 
 // causes one move to happen.
-Game.prototype.do_move = function(usr_input){
-    var move_index;
-    move_index = this.find_index(usr_input);
-    this.board.make_move(move_index);
-    this.board.display_board();
+Game.prototype.do_move = function(usr_input, cur_player, game){
+    console.log();
+    if (game.validate_move(usr_input)){
+        game.board.make_move(game.find_index(usr_input), cur_player.piece );
+        if (cur_player === game.player1){
+            cur_player = game.player2;
+        }else{
+            cur_player = game.player1;
+        }
+        game.board.display_board();
+        return(cur_player);
+    }else{
+        game.board.display_board();
+    }
 };
+
 
 // Takes a valid move string eg '1a' and converts it to the index of board[]
 Game.prototype.find_index = function(move){
@@ -127,16 +137,7 @@ Game.prototype.main = function(){
 
     process.stdin.on('data', function (text){
         text = text.toString().trim();
-        if (this.validate_move(text)){
-            this.do_move(text, current_player.piece);
-            if (current_player === player1){
-                current_player = player2;
-            }else{
-                current_player = player1;
-            }
-        }else{
-            console.log("invalid");
-        }
+        current_player = game.do_move(text, current_player, game);
     });
 };
 
@@ -145,6 +146,6 @@ module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
 
-//game = new Game();
+game = new Game();
 //console.log(game.validate_move('1a'));
-//game.main();
+game.main();
