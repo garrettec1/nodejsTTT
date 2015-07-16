@@ -103,10 +103,12 @@ Game.prototype.validate_move = function(input){
     if( this.check_move(input)){
         index = this.find_index(input);
     }else{
+        console.log("invalid format");
         return (false);
     }if (this.board.is_move_index_empty(index)){
         return(true);
     }else{
+        console.log("That space is full.");
         return (false);
     }
 };
