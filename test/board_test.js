@@ -18,6 +18,19 @@ describe( 'Game', function(){
     beforeEach(function(){
         game = new ttt.game();
     });
+    describe('#get_next_player', function(){
+        var cur_player;
+        var self;
+        it('should take the current player and return the next player',
+           function(){
+               cur_player = game.player1;
+               expect(game.get_next_player(cur_player, game)).to.equal(
+                   game.player2);
+               cur_player = game.player2;
+               expect(game.get_next_player(cur_player, game)).to.equal(
+                   game.player1);
+        });
+    });
     describe('#validate_move', function(){
         it('should validate a properly formatted move input', function(){
             expect(game.validate_move('1a')).to.equal(true);
