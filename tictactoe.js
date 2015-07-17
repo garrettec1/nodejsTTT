@@ -60,7 +60,8 @@ function Game(){
     this.player2 = new Player('O');
 }
 
-// causes one move to happen.
+// causes one move to happen. Takes string usr_input, cur_player current
+// Player object, and game, a reference to this Game object.
 Game.prototype.do_move = function(usr_input, cur_player, game){
     console.log();
     if (game.validate_move(usr_input)){
@@ -117,7 +118,8 @@ Game.prototype.validate_move = function(input){
         return (false);
     }
 };
-
+// Takes the current player object, returns the next player object.
+// game is a reference to this game object. Passed in from Game.main
 Game.prototype.get_next_player = function(cur_player, game){
     if (cur_player === game.player1){
         cur_player = game.player2;
@@ -128,8 +130,10 @@ Game.prototype.get_next_player = function(cur_player, game){
     return(cur_player);
 };
 
-// Broken. Very Broken. Working on it.
+
 // Deals with the event loop
+// the game variable is assigned to Game.this because the when process.stdin
+// starts, this gets bound to process.
 Game.prototype.main = function(){
     var stdin = process.stdin;
     var current_player = this.player1;
@@ -140,7 +144,7 @@ Game.prototype.main = function(){
     game.board.display_board();
     console.log("Enter a move. eg 1a: ");
 
-    process.stdin.on('data', function (text){
+    stdin.on('data', function (text){
         text = text.toString().trim();
         if(game.do_move(text, current_player, game)){
             current_player = game.get_next_player(current_player, game);
@@ -153,6 +157,6 @@ module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
 
-game = new Game();
+//game = new Game();
 //console.log(game.validate_move('1a'));
-game.main();
+//game.main();
