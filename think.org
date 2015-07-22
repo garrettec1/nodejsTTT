@@ -154,3 +154,29 @@ This text file is for organizing my thoughts.
         do_a_thing(text);}
         would trigger do_a_thing(text);
      5. While loops will not behave as expected without blocking.
+** Short blocking example
+   This will actually cause blocking, so a while loop would behave as expected.
+   Tiny bug if you enter more than 20 chars.
+fs = require('fs');
+function inputSync() {
+    var buffer = new Buffer(20);
+    var amount = fs.readSync(0, buffer, 0, 20);
+    return buffer.slice(0, amount);
+};
+
+var bar = function(){
+    console.log("start");
+    var foo = inputSync();
+    foo = foo.toString().trim();
+    return(foo);
+};
+
+var derp;
+var game = true;
+while(game){
+    derp = bar();
+    if (derp == 'q'){
+        game = false;
+    }
+}
+console.log("do another thing");
