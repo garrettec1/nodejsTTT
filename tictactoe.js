@@ -38,6 +38,23 @@ Game_Board.prototype.is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
 
+
+Game_Board.prototype.detect_win = function(piece){
+    for(set of this.win_conditions){
+        var counter = 0;
+        for(square of set){
+            if (this.board[square] == piece){
+                counter++;
+            }
+            if (counter == 3){
+                return(true);
+            }
+        }
+    }
+    return(false);
+};
+
+
 // Takes a valid move and a piece from Game and applies it to the board.
 Game_Board.prototype.make_move = function(index, piece){
     this.board[index] = piece;
