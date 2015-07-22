@@ -149,9 +149,10 @@ Game.prototype.get_next_player = function(cur_player){
     return(cur_player);
 };
 
+// calls detect win, announces a winner and ends the prog.
 Game.prototype.is_game_finished = function(piece){
-    if(game.board.detect_win(piece)){
-        game.board.display_board();
+    if(this.board.detect_win(piece)){
+        this.board.display_board();
         console.log("The "+ piece+ "'s have won the game!");
         console.log("Congrats! \nAnd thanks for playing!")
         process.exit();
