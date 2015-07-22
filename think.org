@@ -180,3 +180,10 @@ while(game){
     }
 }
 console.log("do another thing");
+
+** Checking for wins
+   - Probably just use an array of arrays with the 8 win conditions.
+   - nested for loop to iterate through and check for wins
+   - take current_player to do player.piece
+   - return true if game is finished, false if not.
+   - if true turn off stdin. Print some win message. End the prog.
