@@ -38,7 +38,6 @@ Game_Board.prototype.is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
 
-
 Game_Board.prototype.detect_win = function(piece){
     for(set of this.win_conditions){
         var counter = 0;
@@ -150,6 +149,14 @@ Game.prototype.get_next_player = function(cur_player, game){
     return(cur_player);
 };
 
+Game.prototype.is_game_finished = function(piece){
+    if(game.board.detect_win(piece)){
+        game.board.display_board();
+        console.log("The "+ piece+ "'s have won the game!");
+        console.log("Congrats! \nAnd thanks for playing!")
+        process.exit();
+    }
+};
 
 // Deals with the event loop
 // the game variable is assigned to Game.this because the when process.stdin
@@ -167,10 +174,7 @@ Game.prototype.main = function(){
     stdin.on('data', function (text){
         text = text.toString().trim();
         if(game.do_move(text, current_player, game)){
-            if(game.board.detect_win(current_player.piece)){
-                console.log("someone won");
-                process.exit();
-            }
+            game.is_game_finished(current_player.piece);
             current_player = game.get_next_player(current_player, game);
         }
     });
@@ -181,6 +185,6 @@ module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
 
-//game = new Game();
-//console.log(game.validate_move('1a'));
-//game.main();
+game = new Game();
+console.log(game.validate_move('1a'));
+game.main();
