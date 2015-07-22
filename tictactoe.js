@@ -167,6 +167,10 @@ Game.prototype.main = function(){
     stdin.on('data', function (text){
         text = text.toString().trim();
         if(game.do_move(text, current_player, game)){
+            if(game.board.detect_win(current_player.piece)){
+                console.log("someone won");
+                process.exit();
+            }
             current_player = game.get_next_player(current_player, game);
         }
     });
