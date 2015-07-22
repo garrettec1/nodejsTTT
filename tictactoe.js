@@ -9,6 +9,9 @@ var util = require('util');
 // Instantiates an empty game board.
 function Game_Board() {
     this.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+    this.win_conditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], //rows
+                           [0, 3, 6], [1, 4, 7], [2, 5, 8], //columns
+                           [0, 4, 8], [6, 4, 2]];           //diagonals
 }
 
 // class methods
