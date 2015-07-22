@@ -16,7 +16,7 @@ var ttt = require('../tictactoe.js');
 describe( 'Game', function(){
     var game;
     beforeEach(function(){
-        game = new ttt.game();
+        game = new ttt.game(new ttt.board(), new ttt.player('X'), new ttt.player('O'));
     });
     describe('#get_next_player', function(){
         var cur_player;
