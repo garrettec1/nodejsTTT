@@ -72,11 +72,11 @@ function Player (piece){
 
 // constructor
 // The Game class will be responsible for communicating and directing messages
-// between Player and Game_Board.
-function Game(){
-    this.board = new Game_Board();
-    this.player1 = new Player('X');
-    this.player2 = new Player('O');
+// between Player and Game_Board. Now dependents injected.
+function Game(board, player1, player2){
+    this.board = board;
+    this.player1 = player1;
+    this.player2 = player2;
 }
 
 // causes one move to happen. Takes string usr_input, cur_player current
@@ -121,7 +121,6 @@ Game.prototype.check_move = function(move){
            (column == 'a' || column == 'b' || column =='c'));
 };
 
-
 //Takes string input from stdin listener, validates and returns bool
 Game.prototype.validate_move = function(input){
     var index;
@@ -137,8 +136,8 @@ Game.prototype.validate_move = function(input){
         return (false);
     }
 };
+
 // Takes the current player object, returns the next player object.
-// game is a reference to this game object. Passed in from Game.main
 Game.prototype.get_next_player = function(cur_player){
     if (cur_player === this.player1){
         cur_player = this.player2;
@@ -186,6 +185,5 @@ module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
 
-game = new Game();
-console.log(game.validate_move('1a'));
+game = new Game(new Game_Board(), new Player('X'), new Player('O'));
 game.main();
