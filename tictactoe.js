@@ -81,13 +81,13 @@ function Game(){
 
 // causes one move to happen. Takes string usr_input, cur_player current
 // Player object, and game, a reference to this Game object.
-Game.prototype.do_move = function(usr_input, cur_player, game){
+Game.prototype.do_move = function(usr_input, cur_player){
     console.log();
-    if (game.validate_move(usr_input)){
-        game.board.make_move(game.find_index(usr_input), cur_player.piece );
+    if (this.validate_move(usr_input)){
+        this.board.make_move(this.find_index(usr_input), cur_player.piece );
         return(true);
     }else{
-        game.board.display_board();
+        this.board.display_board();
         return(false);
     }
 };
@@ -139,13 +139,13 @@ Game.prototype.validate_move = function(input){
 };
 // Takes the current player object, returns the next player object.
 // game is a reference to this game object. Passed in from Game.main
-Game.prototype.get_next_player = function(cur_player, game){
-    if (cur_player === game.player1){
-        cur_player = game.player2;
+Game.prototype.get_next_player = function(cur_player){
+    if (cur_player === this.player1){
+        cur_player = this.player2;
     }else{
-        cur_player = game.player1;
+        cur_player = this.player1;
     }
-    game.board.display_board();
+    this.board.display_board();
     return(cur_player);
 };
 
@@ -173,9 +173,9 @@ Game.prototype.main = function(){
 
     stdin.on('data', function (text){
         text = text.toString().trim();
-        if(game.do_move(text, current_player, game)){
+        if(game.do_move(text, current_player)){
             game.is_game_finished(current_player.piece);
-            current_player = game.get_next_player(current_player, game);
+            current_player = game.get_next_player(current_player);
         }
     });
 };
