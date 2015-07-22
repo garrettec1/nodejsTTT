@@ -7,8 +7,8 @@ var util = require('util');
 
 // constructor
 // Instantiates an empty game board.
-function Game_Board() {
-    this.board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+function Game_Board(board) {
+    this.board = board || [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
     this.win_conditions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], //rows
                            [0, 3, 6], [1, 4, 7], [2, 5, 8], //columns
                            [0, 4, 8], [6, 4, 2]];           //diagonals
