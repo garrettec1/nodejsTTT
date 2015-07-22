@@ -142,8 +142,15 @@ This text file is for organizing my thoughts.
      7. If false Game (prints a message?) and calls ask_move
    - See. Having Game as the intermediary is increasing complexity.
 ** Rethinking flow
-   - How can I simplify this?
-   - I can make a function in Player that calls ask_move, and find_index
-     and returns the index.
-   - Should I do that as a callback? I am still struggling a bit with the
-     concept of callbacks.
+   - Okay, the inherent event loop thing worked very differently than I had
+     thought.
+     1. The event loop is always running.
+     2. What you see is asynchronous but not concurrent behavior.
+     3. The way to handle an event is to set a listener.
+        process.stdin.on(); For example, listens for user input from
+        keyboard entries followed by a newline character.
+     4. When the event is triggered is activates the callback functions within.
+        stdin.on('data', function(text){
+        do_a_thing(text);}
+        would trigger do_a_thing(text);
+     5. While loops will not behave as expected without blocking.
