@@ -161,8 +161,9 @@ Game.prototype.is_game_finished = function(piece){
 // Deals with the event loop
 // the game variable is assigned to Game.this because the when process.stdin
 // starts, this gets bound to process.
-Game.prototype.main = function(){
-    var stdin = process.stdin;
+// Injecting an event emitter (Hopefully)
+Game.prototype.main = function(event_doohicky){
+    var stdin = event_doohicky;
     var current_player = this.player1;
     var game = this;
 
@@ -186,4 +187,4 @@ module.exports.board = Game_Board;
 module.exports.player = Player;
 
 game = new Game(new Game_Board(), new Player('X'), new Player('O'));
-game.main();
+game.main(process.stdin);
