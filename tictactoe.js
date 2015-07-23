@@ -149,12 +149,13 @@ Game.prototype.get_next_player = function(cur_player){
 };
 
 // calls detect win, announces a winner and ends the prog.
-Game.prototype.is_game_finished = function(piece){
+Game.prototype.is_game_finished = function(piece, stdin){
     if(this.board.detect_win(piece)){
         this.board.display_board();
         console.log("The "+ piece+ "'s have won the game!");
         console.log("Congrats! \nAnd thanks for playing!")
-        process.exit();
+        stdin.removeAllListeners('data');
+        //process.exit();
     }
 };
 
@@ -175,7 +176,7 @@ Game.prototype.main = function(event_doohicky){
     stdin.on('data', function (text){
         text = text.toString().trim();
         if(game.do_move(text, current_player)){
-            game.is_game_finished(current_player.piece);
+            game.is_game_finished(current_player.piece, stdin);
             current_player = game.get_next_player(current_player);
         }
     });
@@ -186,5 +187,5 @@ module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
 
-game = new Game(new Game_Board(), new Player('X'), new Player('O'));
-game.main(process.stdin);
+//game = new Game(new Game_Board(), new Player('X'), new Player('O'));
+//game.main(process.stdin);
