@@ -25,8 +25,8 @@ describe( 'Game', function(){
     describe('#main', function(){
         it('should make some moves and end the game', function(){
             game.main(input_event);
-            for (entries of moves){
-                input_event.emit(entries);
+            for (entry of moves){
+                input_event.emit('data', entry);
             }
         });
     });
