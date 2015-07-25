@@ -163,9 +163,14 @@ Game.prototype.is_game_finished = function(piece, stdin){
     if(this.board.detect_win(piece)){
         this.board.display_board();
         console.log("The "+ piece+ "'s have won the game!");
-        console.log("Congrats! \nAnd thanks for playing!")
+        console.log("Congrats! \nAnd thanks for playing!");
         stdin.removeAllListeners('data');
         //process.exit();
+    }else if(this.detect_tie()){
+        this.board.display_board();
+        console.log("This game is a tie!");
+        console.log("Thanks for playing!");
+        stdin.removeAllListeners('data');
     }
 };
 
