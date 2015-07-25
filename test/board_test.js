@@ -14,20 +14,54 @@ var event = require('events');
 // Should tell Board to check for a win
 
 
+function Mock_Board(board){
+    this.message = [];
+}
+
+
+// mock of display does nothing:
+Mock_Board.prototype.display_board = function(){
+    this.message.push('display_board')
+};
+
+// Checks to ensure the space is empty and available to take a move.
+Mock_Board.prototype.is_move_index_empty = function(move_index){
+    this.message.push('is_move_index_empy')
+    return(true);
+};
+
+Mock_Board.prototype.detect_win = function(piece){
+    this.message.push('detect_win ' + piece);
+    return(true);
+};
+// Mock make_move applies a move, returns index for testing
+Mock_Board.prototype.make_move = function(index, piece){
+    this.message.push('make_move '+ index + ' '+ piece);
+    if (piece == 'O'){
+        return(true);
+    }
+};
+
+
+
 describe( 'Game', function(){
     var game;
     beforeEach(function(){
         game = new ttt.game(new ttt.board(), new ttt.player('X'),
                             new ttt.player('O'));
     });
-    var moves = ['1a','2a','1b','2b','1c'];
+    //var moves = ['1a','2a','1b','2b','1c'];
+    var moves = ['1a','2a'];
     var input_event = new event.EventEmitter();
     describe('#main', function(){
         it('should make some moves', function(){
+            game = new ttt.game(new Mock_Board(), new ttt.player('X'),
+                                new ttt.player('O'));
+            var index;
             game.main(input_event);
             for (entry of moves){
                 input_event.emit('data', entry);
-                expect(game.validate_move(entry)).to.equal(false);
+                console.log(game.board.message);
             }
         });
     });
