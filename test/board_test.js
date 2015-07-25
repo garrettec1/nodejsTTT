@@ -169,19 +169,6 @@ describe('Game_Board', function(){
             board.make_move(7,'O');
             expect(board.get_board_index_state(7)).to.equal('O');
         });
-        // it('should not make a move in a filled space', function() {
-        //     board.make_move(0, 'X');
-        //     board.make_move(0, 'O');
-        //     expect(board.get_board_index_state(0)).to.equal('X');
-        // });
-        // it('should return true when it makes a move', function() {
-        //     expect(board.make_move(0,'X')).to.equal(true);
-        // });
-        // it('should return false if that space is already occupied',
-        //    function() {
-        //        board.make_move(0, 'X');
-        //        expect(board.make_move(0,'O')).to.equal(false);
-        //    });
     });
 
     describe('#is_move_index_empty', function(){
