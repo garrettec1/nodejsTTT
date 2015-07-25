@@ -38,6 +38,16 @@ Game_Board.prototype.is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
 
+Game_Boar.prototype.detect_tie = function(){
+    for(square in this.board){
+        if( square == ' '){
+            return(false);
+        }else{
+            return(true);
+        }
+    }
+};
+
 Game_Board.prototype.detect_win = function(piece){
     for(set of this.win_conditions){
         var counter = 0;
