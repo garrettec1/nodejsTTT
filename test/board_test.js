@@ -1,4 +1,4 @@
-//assert = require("assert");
+var assert = require("assert");
 var expect = require('chai').expect;
 var ttt = require('../tictactoe.js');
 var event = require('events');
@@ -32,14 +32,16 @@ Mock_Board.prototype.is_move_index_empty = function(move_index){
 
 Mock_Board.prototype.detect_win = function(piece){
     this.message.push('detect_win ' + piece);
-    return(true);
+    if (piece == 'O'){
+        return(true);
+    }else{
+        return(false);
+    }
 };
+
 // Mock make_move applies a move, returns index for testing
 Mock_Board.prototype.make_move = function(index, piece){
     this.message.push('make_move '+ index + ' '+ piece);
-    if (piece == 'O'){
-        return(true);
-    }
 };
 
 
@@ -52,6 +54,17 @@ describe( 'Game', function(){
     });
     //var moves = ['1a','2a','1b','2b','1c'];
     var moves = ['1a','2a'];
+    var final_state = [ 'display_board',
+                        'is_move_index_empy',
+                        'make_move 0 X',
+                        'detect_win X',
+                        'display_board',
+                        'is_move_index_empy',
+                        'make_move 3 O',
+                        'detect_win O',
+                        'display_board',
+                        'display_board' ];
+
     var input_event = new event.EventEmitter();
     describe('#main', function(){
         it('should make some moves', function(){
@@ -61,8 +74,10 @@ describe( 'Game', function(){
             game.main(input_event);
             for (entry of moves){
                 input_event.emit('data', entry);
-                console.log(game.board.message);
             }
+            console.log(game.board.message);
+            //expect(game.board.messages).to.deep.equal(final_state);
+            assert.deepEqual(final_state, game.board.messages);
         });
     });
     describe('#get_next_player', function(){
