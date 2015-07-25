@@ -143,6 +143,23 @@ describe('Game_Board', function(){
     beforeEach(function(){
        board = new ttt.board();
     });
+    describe('#detect_win', function(){
+        it('should respond true if the game is won', function(){
+            board = new ttt.board(['X','X','X',' ',' ',' ',' ',' ',' ']);
+            expect(board.detect_win('X')).to.equal(true);
+        });
+        it('should return false for O and true for X', function(){
+            board = new ttt.board(['X','X','X','O',' ',' ','O',' ',' ']);
+            expect(board.detect_win('O')).to.equal(false);
+            expect(board.detect_win('X')).to.equal(true);
+        });
+        it('should return false if the game is not won',function(){
+            board = new ttt.board(['X','O','X','X','O','O','O','X','X']);
+            expect(board.detect_win('X')).to.equal(false);
+            expect(board.detect_win('O')).to.equal(false);
+        });
+    });
+
     describe('#make_move', function(){
         it('should add an X in an empty space', function() {
             board.make_move(0,'X');
