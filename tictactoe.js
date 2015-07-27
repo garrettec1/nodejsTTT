@@ -34,6 +34,8 @@ Game.board.prototype.find_player_pos = function(){
     return(x_moves);
 };
 
+// Actually, what I should do is hold a copy of moves made IN PLAYER
+// That would give Player an important thing to do. :D
 Game.board.prototype.find_comp_pos = function(){
     var o_moves = [];
     for (index in this.board){
