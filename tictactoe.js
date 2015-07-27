@@ -20,6 +20,18 @@ Game_Board.prototype.get_board_index_state = function(board_index){
     return (this.board[board_index]);
 };
 
+
+Game_Board.prototype.move_value = function(){
+    // declare initial values for moves as zero
+    // moves are grouped by location
+    var corner = {'0': 0, '2': 0, '6': 0, '8': 0};
+    var center = {'4': 0};
+    var middle = {'1': 0, '3': 0, '5': 0, '7': 0};
+
+
+
+};
+
 // Displays the game board. Currently not very pretty
 Game_Board.prototype.display_board = function(){
     console.log(util.format("\n\t  a   b   c"));
