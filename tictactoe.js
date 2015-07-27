@@ -28,6 +28,14 @@ Game_Board.prototype.move_value = function(){
     var center = {'4': 0};
     var middle = {'1': 0, '3': 0, '5': 0, '7': 0};
 
+    //there are two things to think about lines under attack and
+    // lines to attack. The best move is one that defends the most
+    // lines of attack, and attacks an open line as well.
+    // The plan than is to scan the board, for X's, add points to
+    // those lines of defense, then scan for open lines of attack
+    // and add points to those as well. The highest value should be
+    // the 'best' move. Theoretically. There is still the issue of removing
+    // made moves and blocked lines.
 
 
 };
