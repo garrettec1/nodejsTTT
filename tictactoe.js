@@ -34,6 +34,16 @@ Game.board.prototype.find_player_pos = function(){
     return(x_moves);
 };
 
+Game.board.prototype.find_comp_pos = function(){
+    var o_moves = [];
+    for (index in this.board){
+        if (this.board[index] == 'O'){
+            o_moves.push(index);
+        }
+    }
+    return(o_moves);
+};
+
 Game_Board.prototype.move_value = function(){
     // declare initial values for moves as zero
     // moves are grouped by location
