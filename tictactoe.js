@@ -38,14 +38,14 @@ Game_Board.prototype.is_move_index_empty = function(move_index){
     return(this.board[move_index] == ' ');
 };
 
-Game_Boar.prototype.detect_tie = function(){
-    for(square in this.board){
+Game_Board.prototype.detect_tie = function(){
+    for(square of this.board){
         if( square == ' '){
+            console.log('square' + square);
             return(false);
-        }else{
-            return(true);
         }
     }
+    return(true);
 };
 
 Game_Board.prototype.detect_win = function(piece){
@@ -166,7 +166,7 @@ Game.prototype.is_game_finished = function(piece, stdin){
         console.log("Congrats! \nAnd thanks for playing!");
         stdin.removeAllListeners('data');
         //process.exit();
-    }else if(this.detect_tie()){
+    }else if(this.board.detect_tie()){
         this.board.display_board();
         console.log("This game is a tie!");
         console.log("Thanks for playing!");
@@ -202,5 +202,5 @@ module.exports.game = Game;
 module.exports.board = Game_Board;
 module.exports.player = Player;
 
-//game = new Game(new Game_Board(), new Player('X'), new Player('O'));
-//game.main(process.stdin);
+game = new Game(new Game_Board(), new Player('X'), new Player('O'));
+game.main(process.stdin);
