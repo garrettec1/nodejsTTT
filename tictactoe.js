@@ -21,6 +21,16 @@ Game_Board.prototype.get_board_index_state = function(board_index){
 };
 
 
+Game.board.prototype.find_player_pos = function(){
+    var x_moves = [];
+    for (index in this.board){
+        if (this.board[index] == 'X'){
+            x_moves.push(index);
+        }
+    }
+    return(x_moves);
+};
+
 Game_Board.prototype.move_value = function(){
     // declare initial values for moves as zero
     // moves are grouped by location
