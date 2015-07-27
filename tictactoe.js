@@ -21,6 +21,9 @@ Game_Board.prototype.get_board_index_state = function(board_index){
 };
 
 
+// finds player move indexes
+// probably inefficient to find every move, but I am not committed to making
+// another member var yet.
 Game.board.prototype.find_player_pos = function(){
     var x_moves = [];
     for (index in this.board){
