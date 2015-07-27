@@ -140,7 +140,9 @@ function Game(board, player1, player2){
 Game.prototype.do_move = function(usr_input, cur_player){
     console.log();
     if (this.validate_move(usr_input)){
-        this.board.make_move(this.find_index(usr_input), cur_player.piece );
+        var move_index = this.find_index(usr_input);
+        this.board.make_move(move_index, cur_player.piece );
+        this.cur_player.moves.push(move_index);
         return(true);
     }else{
         this.board.display_board();
