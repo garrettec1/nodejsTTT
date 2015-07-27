@@ -196,6 +196,9 @@ console.log("do another thing");
      get user input, the AI player was going to get the AI move. It would have
      given me the same interface even if the object was doing different things.
    - At this point, I am not sure how to handle the event input for AI moves.
+     * I can make the AI play by making it part of the UI event callback, but
+       this would negate the option of having 2 AI's, or consign the AI to
+       going first or second.
    - The player object has become anemic. It may need to be removed entirely,
      as it currently only holds information about which piece a player has.
    - Putting AI code into the player object would make it more of an AI object,
