@@ -20,32 +20,6 @@ Game_Board.prototype.get_board_index_state = function(board_index){
     return (this.board[board_index]);
 };
 
-
-// finds player move indexes
-// probably inefficient to find every move, but I am not committed to making
-// another member var yet.
-Game.board.prototype.find_player_pos = function(){
-    var x_moves = [];
-    for (index in this.board){
-        if (this.board[index] == 'X'){
-            x_moves.push(index);
-        }
-    }
-    return(x_moves);
-};
-
-// Actually, what I should do is hold a copy of moves made IN PLAYER
-// That would give Player an important thing to do. :D
-Game.board.prototype.find_comp_pos = function(){
-    var o_moves = [];
-    for (index in this.board){
-        if (this.board[index] == 'O'){
-            o_moves.push(index);
-        }
-    }
-    return(o_moves);
-};
-
 Game_Board.prototype.move_value = function(){
     // declare initial values for moves as zero
     // moves are grouped by location
