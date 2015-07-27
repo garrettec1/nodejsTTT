@@ -187,3 +187,41 @@ console.log("do another thing");
    - take current_player to do player.piece
    - return true if game is finished, false if not.
    - if true turn off stdin. Print some win message. End the prog.
+* Thinking about AI
+** Intro thoughts
+   - Using the event loop has changed the shape of my Object model in ways I
+     did not anticipate. This has some consequences.
+   - For one, I had planned on having player handle getting moves.
+     I would have called player to get a move, the human player was going to
+     get user input, the AI player was going to get the AI move. It would have
+     given me the same interface even if the object was doing different things.
+   - At this point, I am not sure how to handle the event input for AI moves.
+   - The player object has become anemic. It may need to be removed entirely,
+     as it currently only holds information about which piece a player has.
+   - Putting AI code into the player object would make it more of an AI object,
+     that also holds the piece and potentially a Name.
+** Thoughts on getting board info for AI
+   - It's an interesting problem for me from a design perspective. The AI
+     itself is certainly interesting enough to merit its own object, however
+     it NEEDS information about the Game_Board state to make decisions. So from
+     the point of view of an object keeping its member variables private, it
+     would be bad practice to export that data to another object. The whole
+     IDEA was to have Game drive the other objects, and have them have very
+     specific responsibilities.
+   - I think I need the Game_Board to return some kind of data structure with
+     interesting information about the game state as opposed to just the board.
+   - I could just jam things into Game_Board, and refactor once I have a more
+     clear idea of how the AI is going to operate. Right now I don't know
+** Step the first (maybe)
+   - I want to make some kind of value assertions about board positions.
+   - There are three possible starting moves. Corner, center, edge.
+     1. Corner has the highest value for a starting move.
+     2. Center has the second highest.
+     3. Middle has the lowest.
+   - I May be able to generally group all moves within these three categories.
+     1. Corner = [0,2,6,8]
+     2. Center = [4]
+     3. Middle = [1,3,5,7]
+   - If I use those as keys, I can store a value for potential moves calculate
+     by some as of yet undetermined system.
+   - Benefit of being implementable and testable.
