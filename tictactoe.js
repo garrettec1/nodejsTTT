@@ -122,6 +122,7 @@ Game_Board.prototype.make_move = function(index, piece){
 // I anticipate it handling AI in the future.
 function Player (piece){
     this.piece = piece;
+    this.moves = [];
 }
 
 
