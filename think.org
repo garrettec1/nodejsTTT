@@ -228,3 +228,19 @@ console.log("do another thing");
    - If I use those as keys, I can store a value for potential moves calculate
      by some as of yet undetermined system.
    - Benefit of being implementable and testable.
+** Getting AI into the event loop
+   - The most obvious thing I can do is put the AI move into the end of the
+     callback for stdin.on. So you would do a human move, then a computer move.
+   - This means the AI can ONLY go second, and there can be NO second human
+     player.
+   - I could put a buttload of if conditions to check for each possible state.
+     * Human, Human
+     * Ai, Human
+     * Human, Ai
+     * Ai, Ai
+   - Each would have its own event loop. Is this the only way?
+   - Not having blocking makes this much more complex than I feel it needs to
+     be.
+   - In the interest of actually making progress on programming the AI I am
+     going to defer this decision until later. Player1 will be Human, Player2
+     will be AI.
