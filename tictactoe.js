@@ -20,24 +20,30 @@ Game_Board.prototype.get_board_index_state = function(board_index){
     return (this.board[board_index]);
 };
 
-Game_Board.prototype.move_value = function(){
-    // declare initial values for moves as zero
-    // moves are grouped by location
-    var corner = {'0': 0, '2': 0, '6': 0, '8': 0};
-    var center = {'4': 0};
-    var middle = {'1': 0, '3': 0, '5': 0, '7': 0};
-
-    //there are two things to think about lines under attack and
-    // lines to attack. The best move is one that defends the most
-    // lines of attack, and attacks an open line as well.
-    // The plan than is to scan the board, for X's, add points to
-    // those lines of defense, then scan for open lines of attack
-    // and add points to those as well. The highest value should be
-    // the 'best' move. Theoretically. There is still the issue of removing
-    // made moves and blocked lines.
+Game_Board.prototype.negamax = function(node, color){
+    // issue with detect_win() taking peice
+    // general issue of needing remaining available moves to make child
+    // need to value the final board state
+    if ( node.detect_win() node.detect_tie()){
+        return (color * the heuristic value of node);
+    }
+    var bestValue := -1000;
+    // a generate array of valid moves
+    // var valid moves;
+    // loop is boord index empty
+    // if it is valid move.push(index);
+    // am I going to be constructing a large amount of board objects?
+    for (element of valid moves){
+        temp_board = new Game_Board(boardcopy);
+        temp_board.make_move(element, piece);
+        value = -negamax(child, depth -1, -color);
+        bestValue = max(bestValue, value);
+    }
+    return bestValue;
 
 
 };
+
 
 // Displays the game board. Currently not very pretty
 Game_Board.prototype.display_board = function(){
