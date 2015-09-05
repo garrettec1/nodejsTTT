@@ -149,6 +149,10 @@ describe('Game_Board', function(){
             var a_set = ['X', 'O', 'X'];
             expect(board.three_in_a_row(a_set)).to.equal(false);
         });
+        it('should return true if all are the same', function(){
+            var a_set = ['X', 'X', 'X'];
+            expect(board.three_in_a_row(a_set)).to.equal(true);
+        });
     });
     describe('#detect_win', function(){
         it('should respond true if the game is won', function(){
