@@ -143,6 +143,13 @@ describe('Game_Board', function(){
     beforeEach(function(){
        board = new ttt.board();
     });
+    describe('#three_in_a_row', function(){
+        it('should return false if all are different', function(){
+            // it will receive a set of three and check if all are the same piece
+            var a_set = ['X', 'O', 'X'];
+            expect(board.three_in_a_row(a_set)).to.equal(false);
+        });
+    });
     describe('#detect_win', function(){
         it('should respond true if the game is won', function(){
             board = new ttt.board(['X','X','X',' ',' ',' ',' ',' ',' ']);
