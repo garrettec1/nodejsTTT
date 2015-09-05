@@ -20,29 +20,29 @@ Game_Board.prototype.get_board_index_state = function(board_index){
     return (this.board[board_index]);
 };
 
-Game_Board.prototype.negamax = function(node, color){
+//Game_Board.prototype.negamax = function(node, color){
     // issue with detect_win() taking peice
     // general issue of needing remaining available moves to make child
     // need to value the final board state
-    if ( node.detect_win() node.detect_tie()){
-        return (color * the heuristic value of node);
-    }
-    var bestValue := -1000;
+    //if ( node.detect_win() node.detect_tie()){
+    //return (color * the heuristic value of node);
+    //}
+    //var bestValue := -1000;
     // a generate array of valid moves
     // var valid moves;
     // loop is boord index empty
     // if it is valid move.push(index);
     // am I going to be constructing a large amount of board objects?
-    for (element of valid moves){
-        temp_board = new Game_Board(boardcopy);
-        temp_board.make_move(element, piece);
-        value = -negamax(child, depth -1, -color);
-        bestValue = max(bestValue, value);
-    }
-    return bestValue;
+    // for (element of valid moves){
+//         temp_board = new Game_Board(boardcopy);
+//         temp_board.make_move(element, piece);
+//         value = -negamax(child, depth -1, -color);
+//         bestValue = max(bestValue, value);
+//     }
+//     return bestValue;
 
 
-};
+// };
 
 
 // Displays the game board. Currently not very pretty
