@@ -153,6 +153,10 @@ describe('Game_Board', function(){
             var a_set = ['X', 'X', 'X'];
             expect(board.three_in_a_row(a_set)).to.equal(true);
         });
+        it('it should return false if all three are blank', function(){
+            var a_set = [' ', ' ', ' '];
+            expect(board.three_in_a_row(a_set)).to.equal(false);
+        });
     });
     describe('#detect_win', function(){
         it('should respond true if the game is won', function(){

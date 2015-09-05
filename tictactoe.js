@@ -92,7 +92,7 @@ Game_Board.prototype.detect_win = function(piece){
     return(false);
 };
 Game_Board.prototype.three_in_a_row = function(a_set){
-    return(a_set[0] == a_set[1] && a_set[1] == a_set[2]);
+    return(a_set[0] != ' ' && a_set[0] == a_set[1] && a_set[1] == a_set[2]);
 };
 
 // Takes a valid move and a piece from Game and applies it to the board.
