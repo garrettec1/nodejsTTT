@@ -67,7 +67,7 @@ describe( 'Game', function(){
 
     var input_event = new event.EventEmitter();
     describe('#main', function(){
-        it('should make some moves', function(){
+        xit('should make some moves', function(){
             game = new ttt.game(new Mock_Board(), new ttt.player('X'),
                                 new ttt.player('O'));
             var index;
