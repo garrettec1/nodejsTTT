@@ -119,7 +119,9 @@ describe( 'Game', function(){
     describe('#find_index', function(){
         it('should return a valid board index for a valid move string input'
            ,function(){
-               valid_indexes = ['1a','1b','1c','2a','2b','2c','3a','3b','3c'];
+               valid_indexes = ['1a','1b','1c',
+                                '2a','2b','2c',
+                                '3a','3b','3c'];
                valid_indexes.forEach(function(element, index){
                    expect(game.find_index(element)).to.equal(index);
                });
@@ -157,15 +159,21 @@ describe('Game_Board', function(){
     });
     describe('#build_set', function(){
         it('returns an 3 array with values from specified indices', function(){
-            board = new ttt.board(['X','X','X',' ',' ',' ',' ',' ',' ']);
+            board = new ttt.board(['X','X','X',
+                                   ' ',' ',' ',
+                                   ' ',' ',' ']);
             expect(board.build_set([0,1,2])).to.deep.equal(['X', 'X', 'X']);
         });
         it('returns an 3 array with values from specified indices', function(){
-            board = new ttt.board(['X','O','X','X','O','O','O','X','X']);
+            board = new ttt.board(['X','O','X',
+                                   'X','O','O',
+                                   'O','X','X']);
             expect(board.build_set([0,1,2])).to.deep.equal(['X', 'O', 'X']);
         });
         it('returns an 3 array with values from specified indices', function(){
-            board = new ttt.board(['X','O','X','X','O','O','O','X','X']);
+            board = new ttt.board(['X','O','X',
+                                   'X','O','O',
+                                   'O','X','X']);
             expect(board.build_set([0,3,6])).to.deep.equal(['X', 'X', 'O']);
         });
     });
