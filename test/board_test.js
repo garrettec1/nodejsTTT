@@ -146,16 +146,27 @@ describe('Game_Board', function(){
     describe('#three_in_a_row', function(){
         it('should return false if all are different', function(){
             // it will receive a set of three and check if all are the same piece
-            var a_set = ['X', 'O', 'X'];
-            expect(board.three_in_a_row(a_set)).to.equal(false);
+            expect(board.three_in_a_row(['X', 'O', 'X'])).to.equal(false);
         });
         it('should return true if all are the same', function(){
-            var a_set = ['X', 'X', 'X'];
-            expect(board.three_in_a_row(a_set)).to.equal(true);
+            expect(board.three_in_a_row(['X', 'X', 'X'])).to.equal(true);
         });
         it('it should return false if all three are blank', function(){
-            var a_set = [' ', ' ', ' '];
-            expect(board.three_in_a_row(a_set)).to.equal(false);
+            expect(board.three_in_a_row([' ', ' ', ' '])).to.equal(false);
+        });
+    });
+    describe('#build_set', function(){
+        it('returns an 3 array with values from specified indices', function(){
+            board = new ttt.board(['X','X','X',' ',' ',' ',' ',' ',' ']);
+            expect(board.build_set([0,1,2])).to.deep.equal(['X', 'X', 'X']);
+        });
+        it('returns an 3 array with values from specified indices', function(){
+            board = new ttt.board(['X','O','X','X','O','O','O','X','X']);
+            expect(board.build_set([0,1,2])).to.deep.equal(['X', 'O', 'X']);
+        });
+        it('returns an 3 array with values from specified indices', function(){
+            board = new ttt.board(['X','O','X','X','O','O','O','X','X']);
+            expect(board.build_set([0,3,6])).to.deep.equal(['X', 'X', 'O']);
         });
     });
     describe('#detect_win', function(){
