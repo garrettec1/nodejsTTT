@@ -52,6 +52,7 @@ describe( 'Game', function(){
         game = new ttt.game(new ttt.board(), new ttt.player('X'),
                             new ttt.player('O'));
     });
+
     //var moves = ['1a','2a','1b','2b','1c'];
     var moves = ['1a','2a'];
     var final_state = [ 'display_board',
@@ -79,7 +80,9 @@ describe( 'Game', function(){
             //expect(game.board.messages).to.deep.equal(final_state);
             assert.deepEqual(final_state, game.board.messages);
         });
+
     });
+
     describe('#get_next_player', function(){
         var cur_player;
         var self;
@@ -92,29 +95,38 @@ describe( 'Game', function(){
                expect(game.get_next_player(cur_player, game)).to.equal(
                    game.player1);
         });
+
     });
+
     describe('#validate_move', function(){
         it('should validate a properly formatted move input', function(){
             expect(game.validate_move('1a')).to.equal(true);
         });
+
         it('should reject improperly formatted move inputs', function(){
             expect(game.validate_move('1A')).to.equal(false);
             expect(game.validate_move('a1')).to.equal(false);
             expect(game.validate_move('0')).to.equal(false);
         });
+
         it('should reject move to a filled space', function(){
             game.board.make_move(0, 'X');
             expect(game.validate_move('1a')).to.equal(false);
         });
+
     });
+
     describe('#check_move', function(){
         it('should validate a properly formatted  move', function(){
             expect(game.check_move("1a")).to.equal(true);
         });
+
         it('rejects improrperly formatted moves', function() {
             expect(game.check_move('2A')).to.equal(false);
         });
+
     });
+
     var valid_indexes;
     describe('#find_index', function(){
         it('should return a valid board index for a valid move string input'
@@ -125,9 +137,13 @@ describe( 'Game', function(){
                valid_indexes.forEach(function(element, index){
                    expect(game.find_index(element)).to.equal(index);
                });
+
            });
+
     });
+
 });
+
 
 
 describe('Player', function(){
@@ -135,9 +151,11 @@ describe('Player', function(){
     beforeEach(function(){
         player = new ttt.player();
     });
+
     // describe the name of the method being tested
 
 });
+
 
 //describe the name of the class
 describe('Game_Board', function(){
@@ -145,18 +163,23 @@ describe('Game_Board', function(){
     beforeEach(function(){
        board = new ttt.board();
     });
+
     describe('#three_in_a_row', function(){
         it('should return false if all are different', function(){
             // it will receive a set of three and check if all are the same piece
             expect(board.three_in_a_row(['X', 'O', 'X'])).to.equal(false);
         });
+
         it('should return true if all are the same', function(){
             expect(board.three_in_a_row(['X', 'X', 'X'])).to.equal(true);
         });
+
         it('it should return false if all three are blank', function(){
             expect(board.three_in_a_row([' ', ' ', ' '])).to.equal(false);
         });
+
     });
+
     describe('#build_set', function(){
         it('returns an 3 array with values from specified indices', function(){
             board = new ttt.board(['X','X','X',
@@ -164,19 +187,23 @@ describe('Game_Board', function(){
                                    ' ',' ',' ']);
             expect(board.build_set([0,1,2])).to.deep.equal(['X', 'X', 'X']);
         });
+
         it('returns an 3 array with values from specified indices', function(){
             board = new ttt.board(['X','O','X',
                                    'X','O','O',
                                    'O','X','X']);
             expect(board.build_set([0,1,2])).to.deep.equal(['X', 'O', 'X']);
         });
+
         it('returns an 3 array with values from specified indices', function(){
             board = new ttt.board(['X','O','X',
                                    'X','O','O',
                                    'O','X','X']);
             expect(board.build_set([0,3,6])).to.deep.equal(['X', 'X', 'O']);
         });
+
     });
+
     describe('#detect_win', function(){
         it('should respond true if the game is won', function(){
             board = new ttt.board(['X','X','X',
@@ -184,12 +211,14 @@ describe('Game_Board', function(){
                                    ' ',' ',' ']);
             expect(board.detect_win()).to.equal(true);
         });
+
         it('should return true if the win is in the last win condition',function(){
             board = new ttt.board([' ',' ','X',
                                    ' ','X',' ',
                                    'X',' ',' ']);
             expect(board.detect_win()).to.equal(true);
         });
+
         describe("should return false", function() {
             it('on a cats game',function(){
                 board = new ttt.board(['X','O','X',
@@ -198,25 +227,32 @@ describe('Game_Board', function(){
                 expect(board.detect_win()).to.equal(false);
                 expect(board.detect_win()).to.equal(false);
             });
+
             it('on a blank board',function(){
                 board = new ttt.board([' ',' ',' ',
                                        ' ',' ',' ',
                                        ' ',' ',' ']);
                 expect(board.detect_win()).to.equal(false);
             });
+
         });
+
     });
+
 
     describe('#make_move', function(){
         it('should add an X in an empty space', function() {
             board.make_move(0,'X');
             expect(board.get_board_index_state(0)).to.equal('X');
         });
+
         it('should make an O in an empty space', function() {
             board.make_move(7,'O');
             expect(board.get_board_index_state(7)).to.equal('O');
         });
+
     });
+
 
     describe('#is_move_index_empty', function(){
         it('should return true if the board index is empty',function() {
@@ -224,6 +260,7 @@ describe('Game_Board', function(){
                 expect(board.is_move_index_empty(i)).to.equal(true);
             };
         });
+
         it('should return false when board index is occupied', function() {
             var i;
             for(i = 0; i < 9; i++){
@@ -233,5 +270,7 @@ describe('Game_Board', function(){
                 expect(board.is_move_index_empty(i)).to.equal(false);
             };
         });
+
     });
+
 });
