@@ -80,14 +80,6 @@ Game_Board.prototype.detect_tie = function(){
 Game_Board.prototype.detect_win = function(){
     var test = this.three_in_a_row;
     return(this.detect_set(test));
-    for(index_set of this.win_conditions){
-        var test_set = this.build_set(index_set);
-        var is_win = test(test_set);
-        if(is_win){
-            return(is_win);
-        }
-    }
-    return(is_win);
 };
 
 
