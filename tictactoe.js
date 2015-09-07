@@ -78,14 +78,20 @@ Game_Board.prototype.detect_tie = function(){
 // if there is a piece, check if all 3 are the same
 // if not break
 Game_Board.prototype.detect_win = function(){
+    var test = this.three_in_a_row;
     for(index_set of this.win_conditions){
         var test_set = this.build_set(index_set);
-        var is_win = this.three_in_a_row(test_set);
+        var is_win = test(test_set);
         if(is_win){
             return(is_win);
         }
     }
     return(is_win);
+};
+
+
+Game_Board.prototype.detect_set = function(){
+
 };
 
 // Checks if a set of three contains all of the same element, but not blank
